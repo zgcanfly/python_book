@@ -6,4 +6,4 @@ while b < 1000:
     print(a,end=',')
     a,b=b,a+b
 
-
+    
