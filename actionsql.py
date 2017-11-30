@@ -10,7 +10,7 @@ db=pymysql.connect(host,user,passwd,dbase)
 cursor=db.cursor()
 
 sql="delete from employee  where age > '%d'" % (20)
-
+createdatasql="create database yuangg if not exists yuangg"
 try:
     cursor.execute(sql)
     db.commit()

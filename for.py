@@ -5,6 +5,7 @@
 list=[1,2,3,4]
 
 it=iter(list)
+j=0
 
 
 #for i in it:
@@ -13,3 +14,8 @@ it=iter(list)
 
 for i in range(len(list)):
     print(next(it))
+
+
+
+
+

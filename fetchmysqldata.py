@@ -14,11 +14,5 @@ sql = "select * from employee"
 
 cursor.execute(sql)
 results = cursor.fetchall()
-for i in results:
-    fname = i[0]
-    lname = i[1]
-    age = i[2]
-    sex = i[3]
-    income = i[4]
-    print("fname=%s"%(fname))
+print(results)
 db.close()

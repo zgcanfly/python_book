@@ -45,4 +45,3 @@ class MySqLCommand(object):
     def closeMysql(self):
         self.cursor.close()
         self.conn.close()
-        
