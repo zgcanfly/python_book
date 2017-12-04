@@ -25,7 +25,7 @@ def isset(list_arr,name):
         return True
     else:
         return False
-print_type="";
+print_str="";
 
 #获取系统内存使用情况
 if (print_type==1) or isset(sys.argv,"mem"):
