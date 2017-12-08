@@ -22,3 +22,4 @@ class student(people):
 y=people('ken',30,30)
 s=student('tom',20,20,20)
 s.speak()
+
