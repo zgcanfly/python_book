@@ -4,6 +4,7 @@ import sys
 import psutil
 import time
 import os
+import socket
 import smtplib
 from email.header import Header
 from email.mime.text import MIMEText
@@ -15,12 +16,13 @@ mail_pass = "yang1462295175"
 
 sender = '15180641712@163.com'
 receivers = ['2467815216@qq.com']
-
-content='我用python'
+hostname = socket.gethostname()
+content=hostname
 title='人生苦短'
 
 time_str =time.strftime("%Y-%m-%d",time.localtime())
 file_name="./"+time_str+".log"
+
 
 if os.path.exists(file_name)== False:
     os.mknod(file_name)
@@ -116,5 +118,5 @@ def send_mail2(SMTP_host,from_account,from_passwd,to_account,subject,content):
     msg['To']=to_account
     email_client.sendmail(from_account,to_account,msg.as_string())
     email_client.quit()
-#if __name__== '__main__':
-#   sendEmail()
+if __name__== '__main__':
+   sendEmail()
