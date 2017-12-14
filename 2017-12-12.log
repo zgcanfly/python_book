@@ -1,0 +1,70 @@
+内存状态如下:
+系统的内存容量为: 3790.9375 MB
+   系统的内存以使用容量为: 2028.00390625 MB
+   系统可用的内存容量为: 1762.93359375MB
+   内存的buffer容量为: 185.578125 MB
+   内存的cache容量为:1437.58984375 MB
+cpu状态如下:
+   user = 141675.51
+   nice = 3802.27
+   system = 93008.6
+   idle = 20250468.57
+   iowait = 12560.11
+   irq = 0.0
+   softirq = 3195.17
+   steal = 0.0
+   guest = 0.0
+ 硬盘信息如下:
+   sdiskpart(device='/dev/vda1', mountpoint='/', fstype='ext4', opts='rw,relatime,data=ordered')
+   sdiskpart(device='/dev/vda1', mountpoint='/var/lib/docker/overlay', fstype='ext4', opts='rw,relatime,data=ordered')
+ 登录用户信息如下:
+    suser(name='root', terminal='tty1', host='root', started=1502786688.0, pid=1112)
+   suser(name='root', terminal='pts/0', host='root', started=1513066112.0, pid=26311)
+---------------------------------------------------------------
+内存状态如下:
+系统的内存容量为: 3790.9375 MB
+   系统的内存以使用容量为: 2045.51171875 MB
+   系统可用的内存容量为: 1745.42578125MB
+   内存的buffer容量为: 179.23828125 MB
+   内存的cache容量为:1386.15234375 MB
+cpu状态如下:
+   user = 141695.85
+   nice = 3802.27
+   system = 93019.87
+   idle = 20253657.46
+   iowait = 12561.72
+   irq = 0.0
+   softirq = 3195.64
+   steal = 0.0
+   guest = 0.0
+ 硬盘信息如下:
+   sdiskpart(device='/dev/vda1', mountpoint='/', fstype='ext4', opts='rw,relatime,data=ordered')
+   sdiskpart(device='/dev/vda1', mountpoint='/var/lib/docker/overlay', fstype='ext4', opts='rw,relatime,data=ordered')
+ 登录用户信息如下:
+    suser(name='root', terminal='tty1', host='root', started=1502786688.0, pid=1112)
+   suser(name='root', terminal='pts/0', host='root', started=1513066112.0, pid=26311)
+---------------------------------------------------------------
+内存状态如下:
+系统的内存容量为: 3790.9375 MB
+   系统的内存以使用容量为: 2168.91796875 MB
+   系统可用的内存容量为: 1622.01953125MB
+   内存的buffer容量为: 132.69921875 MB
+   内存的cache容量为:1231.60546875 MB
+cpu状态如下:
+   user = 141797.26
+   nice = 3802.27
+   system = 93075.87
+   idle = 20266685.26
+   iowait = 12586.94
+   irq = 0.0
+   softirq = 3197.9
+   steal = 0.0
+   guest = 0.0
+ 硬盘信息如下:
+   sdiskpart(device='/dev/vda1', mountpoint='/', fstype='ext4', opts='rw,relatime,data=ordered')
+   sdiskpart(device='/dev/vda1', mountpoint='/var/lib/docker/overlay', fstype='ext4', opts='rw,relatime,data=ordered')
+ 登录用户信息如下:
+    suser(name='root', terminal='tty1', host='root', started=1502786688.0, pid=1112)
+   suser(name='root', terminal='pts/0', host='root', started=1513074176.0, pid=1483)
+   suser(name='root', terminal='pts/1', host='root', started=1513071616.0, pid=29431)
+---------------------------------------------------------------
