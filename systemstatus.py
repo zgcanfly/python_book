@@ -76,10 +76,7 @@ if (print_type==1) or isset(sys.argv,"mem"):
     print_str = print_str + "   系统可用的内存容量为: " + str(mem.total / (memory_convent) - mem.used / (1024 * 1024)) + "MB\n"
     print_str = print_str + "   内存的buffer容量为: " + str(mem.buffers / (memory_convent)) + " MB\n"
     print_str = print_str + "   内存的cache容量为:" + str(mem.cached / (memory_convent)) + " MB\n"
-if int(mem.total / (memory_convent) - mem.used / (1024 * 1024)) < 3000:
-   content=hostname+"：服务器内存值过低，请悉知"
-   sendEmail()
-    
+
 
 #获取cpu的相关信息
 if (print_type==1) or isset(sys.argv,"cpu"):
@@ -109,6 +106,13 @@ if (print_type == 1) or isset(sys.argv, "user"):
     user_status = psutil.users()
     for item in user_status:
         print_str = print_str + "   " + str(item) + "\n"
+
+
+def motinor():
+    if int(mem.total / (memory_convent) - mem.used / (1024 * 1024)) < 3000:
+        content = hostname + "：服务器内存值过低，请悉知"
+        sendEmail()
+    if
 
 print_str += "---------------------------------------------------------------\n"
 print(print_str)
