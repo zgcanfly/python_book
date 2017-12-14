@@ -33,7 +33,7 @@ def sendEmail():
         smtpObj=smtplib.SMTP_SSL(mail_host,465)#ssl
         smtpObj.login(mail_user,mail_pass)#登入验证
         smtpObj.sendmail(sender,receivers,message.as_string()) #发送
-        print("mail has been send success")
+        print("mail has been send success\n")
     except smtplib.SMTPException as e:
         print(e)
 #def send_mail2(SMTP_host,from_account,from_passwd,to_account,subject,content):
@@ -77,7 +77,7 @@ if (print_type==1) or isset(sys.argv,"mem"):
     print_str = print_str + "   内存的buffer容量为: " + str(mem.buffers / (memory_convent)) + " MB\n"
     print_str = print_str + "   内存的cache容量为:" + str(mem.cached / (memory_convent)) + " MB\n"
 if int(mem.total / (memory_convent) - mem.used / (1024 * 1024)) < 3000:
-   content=hostname+"内存值过低，请悉知"
+   content=hostname+"：服务器内存值过低，请悉知"
    sendEmail()
     
 
