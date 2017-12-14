@@ -18,7 +18,7 @@ sender = '15180641712@163.com'
 receivers = ['2467815216@qq.com']
 hostname = socket.gethostname()
 content=hostname
-title='人生苦短'
+title='Pdt服务器状态预警'
 
 time_str =time.strftime("%Y-%m-%d",time.localtime())
 file_name="./"+time_str+".log"
@@ -77,8 +77,8 @@ if (print_type==1) or isset(sys.argv,"mem"):
     print_str = print_str + "   内存的buffer容量为: " + str(mem.buffers / (memory_convent)) + " MB\n"
     print_str = print_str + "   内存的cache容量为:" + str(mem.cached / (memory_convent)) + " MB\n"
 if int(mem.total / (memory_convent) - mem.used / (1024 * 1024)) < 3000:
-   print("内存值过低，发送email")
-   sendEmail()
+   content=hostname+"内存值过低，请悉知"
+   sendEmail(content)
     
 
 #获取cpu的相关信息
