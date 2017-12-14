@@ -36,17 +36,17 @@ def sendEmail():
         print("mail has been send success")
     except smtplib.SMTPException as e:
         print(e)
-def send_mail2(SMTP_host,from_account,from_passwd,to_account,subject,content):
-    email_client= smtplib.SMTP(SMTP_host)
-    email_client.login(from_account,from_passwd)
+#def send_mail2(SMTP_host,from_account,from_passwd,to_account,subject,content):
+#    email_client= smtplib.SMTP(SMTP_host)
+#    email_client.login(from_account,from_passwd)
     #create mesg
 
-    msg=MIMEText(content,'plain','utf-8')
-    msg['Subject']=Header(subject,'utf-8')
-    msg['From']=from_account
-    msg['To']=to_account
-    email_client.sendmail(from_account,to_account,msg.as_string())
-    email_client.quit()
+#    msg=MIMEText(content,'plain','utf-8')
+#   msg['Subject']=Header(subject,'utf-8')
+#    msg['From']=from_account
+#    msg['To']=to_account
+#    email_client.sendmail(from_account,to_account,msg.as_string())
+#    email_client.quit()
 
 if os.path.exists(file_name)== False:
     os.mknod(file_name)
@@ -78,7 +78,7 @@ if (print_type==1) or isset(sys.argv,"mem"):
     print_str = print_str + "   内存的cache容量为:" + str(mem.cached / (memory_convent)) + " MB\n"
 if int(mem.total / (memory_convent) - mem.used / (1024 * 1024)) < 3000:
    content=hostname+"内存值过低，请悉知"
-   sendEmail(content)
+   sendEmail()
     
 
 #获取cpu的相关信息
