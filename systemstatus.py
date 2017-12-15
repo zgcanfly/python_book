@@ -80,7 +80,6 @@ if (print_type==1) or isset(sys.argv,"mem"):
 if int(mem.total / (memory_convent) - mem.used / (1024 * 1024)) < 3000:
    content=hostname+"("+ip+")"+"：服务器内存值过低，请悉知"
    sendEmail()
-    
 
 #获取cpu的相关信息
 if (print_type==1) or isset(sys.argv,"cpu"):
@@ -110,6 +109,13 @@ if (print_type == 1) or isset(sys.argv, "user"):
     user_status = psutil.users()
     for item in user_status:
         print_str = print_str + "   " + str(item) + "\n"
+
+
+def motinor():
+    if int(mem.total / (memory_convent) - mem.used / (1024 * 1024)) < 3000:
+        content = hostname + "：服务器内存值过低，请悉知"
+        sendEmail()
+    if
 
 print_str += "---------------------------------------------------------------\n"
 print(print_str)
