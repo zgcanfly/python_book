@@ -17,6 +17,7 @@ mail_pass = "yang1462295175"
 sender = '15180641712@163.com'
 receivers = ['2467815216@qq.com']
 hostname = socket.gethostname()
+ip = socket.gethostbyname(hostname)
 content=hostname
 title='Pdt服务器状态预警'
 
@@ -77,7 +78,7 @@ if (print_type==1) or isset(sys.argv,"mem"):
     print_str = print_str + "   内存的buffer容量为: " + str(mem.buffers / (memory_convent)) + " MB\n"
     print_str = print_str + "   内存的cache容量为:" + str(mem.cached / (memory_convent)) + " MB\n"
 if int(mem.total / (memory_convent) - mem.used / (1024 * 1024)) < 3000:
-   content=hostname+"：服务器内存值过低，请悉知"
+   content=hostname+"("+ip+")"+"：服务器内存值过低，请悉知"
    sendEmail()
     
 

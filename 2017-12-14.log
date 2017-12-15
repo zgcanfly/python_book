@@ -142,3 +142,98 @@ cpu状态如下:
    suser(name='root', terminal='pts/0', host='root', started=1513157376.0, pid=30075)
    suser(name='root', terminal='pts/1', host='root', started=1513230080.0, pid=21321)
 ---------------------------------------------------------------
+内存状态如下:
+系统的内存容量为: 3790.9375 MB
+   系统的内存以使用容量为: 2169.2109375 MB
+   系统可用的内存容量为: 1621.7265625MB
+   内存的buffer容量为: 144.92578125 MB
+   内存的cache容量为:1207.73828125 MB
+cpu状态如下:
+   user = 143629.29
+   nice = 3802.42
+   system = 94094.99
+   idle = 20581230.12
+   iowait = 12759.69
+   irq = 0.0
+   softirq = 3247.53
+   steal = 0.0
+   guest = 0.0
+硬盘信息如下:
+   sdiskpart(device='/dev/vda1', mountpoint='/', fstype='ext4', opts='rw,relatime,data=ordered')
+   sdiskpart(device='/dev/vda1', mountpoint='/var/lib/docker/overlay', fstype='ext4', opts='rw,relatime,data=ordered')
+登录用户信息如下:
+    suser(name='root', terminal='tty1', host='root', started=1502786688.0, pid=1112)
+   suser(name='root', terminal='pts/0', host='root', started=1513157376.0, pid=30075)
+   suser(name='root', terminal='pts/1', host='root', started=1513230080.0, pid=21321)
+---------------------------------------------------------------
+内存状态如下:
+系统的内存容量为: 3790.9375 MB
+   系统的内存以使用容量为: 2169.45703125 MB
+   系统可用的内存容量为: 1621.48046875MB
+   内存的buffer容量为: 145.09375 MB
+   内存的cache容量为:1211.73046875 MB
+cpu状态如下:
+   user = 143630.77
+   nice = 3802.42
+   system = 94095.83
+   idle = 20581399.79
+   iowait = 12759.83
+   irq = 0.0
+   softirq = 3247.58
+   steal = 0.0
+   guest = 0.0
+硬盘信息如下:
+   sdiskpart(device='/dev/vda1', mountpoint='/', fstype='ext4', opts='rw,relatime,data=ordered')
+   sdiskpart(device='/dev/vda1', mountpoint='/var/lib/docker/overlay', fstype='ext4', opts='rw,relatime,data=ordered')
+登录用户信息如下:
+    suser(name='root', terminal='tty1', host='root', started=1502786688.0, pid=1112)
+   suser(name='root', terminal='pts/0', host='root', started=1513157376.0, pid=30075)
+   suser(name='root', terminal='pts/1', host='root', started=1513230080.0, pid=21321)
+---------------------------------------------------------------
+内存状态如下:
+系统的内存容量为: 3790.9375 MB
+   系统的内存以使用容量为: 2171.7890625 MB
+   系统可用的内存容量为: 1619.1484375MB
+   内存的buffer容量为: 146.95703125 MB
+   内存的cache容量为:1220.48828125 MB
+cpu状态如下:
+   user = 143679.54
+   nice = 3802.42
+   system = 94122.93
+   idle = 20589721.36
+   iowait = 12764.27
+   irq = 0.0
+   softirq = 3248.81
+   steal = 0.0
+   guest = 0.0
+硬盘信息如下:
+   sdiskpart(device='/dev/vda1', mountpoint='/', fstype='ext4', opts='rw,relatime,data=ordered')
+   sdiskpart(device='/dev/vda1', mountpoint='/var/lib/docker/overlay', fstype='ext4', opts='rw,relatime,data=ordered')
+登录用户信息如下:
+    suser(name='root', terminal='tty1', host='root', started=1502786688.0, pid=1112)
+   suser(name='root', terminal='pts/0', host='root', started=1513157376.0, pid=30075)
+   suser(name='root', terminal='pts/1', host='root', started=1513230080.0, pid=21321)
+---------------------------------------------------------------
+内存状态如下:
+系统的内存容量为: 3790.9375 MB
+   系统的内存以使用容量为: 2179.19921875 MB
+   系统可用的内存容量为: 1611.73828125MB
+   内存的buffer容量为: 149.7265625 MB
+   内存的cache容量为:1264.359375 MB
+cpu状态如下:
+   user = 143782.51
+   nice = 3802.42
+   system = 94173.99
+   idle = 20604829.55
+   iowait = 12771.98
+   irq = 0.0
+   softirq = 3251.48
+   steal = 0.0
+   guest = 0.0
+硬盘信息如下:
+   sdiskpart(device='/dev/vda1', mountpoint='/', fstype='ext4', opts='rw,relatime,data=ordered')
+   sdiskpart(device='/dev/vda1', mountpoint='/var/lib/docker/overlay', fstype='ext4', opts='rw,relatime,data=ordered')
+登录用户信息如下:
+    suser(name='root', terminal='tty1', host='root', started=1502786688.0, pid=1112)
+   suser(name='root', terminal='pts/0', host='root', started=1513245440.0, pid=26637)
+---------------------------------------------------------------
