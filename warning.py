@@ -8,7 +8,7 @@ import psutil
 import socket
 import smtplib
 
-default_disk="50%"
+default_disk="10%"
 default_mem=3000
 
 content = '来自火星的空邮件'
