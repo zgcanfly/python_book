@@ -8,8 +8,8 @@ import psutil
 import socket
 import smtplib
 
-default_disk="10%"
-default_mem=3000
+default_disk="80%"
+default_mem=1000
 
 content = '来自火星的空邮件'
 title = 'Pdt服务器预警'
@@ -79,7 +79,9 @@ def check_mem():
         sendEmail(content)
 
 def check_cpu():
-    str_data = os.popen('')
+    Cpu_usage = psutil.cpu_percent()
+    print(Cpu_usage)
 if __name__=='__main__':
     check_disk()
     check_mem()
+    check_cpu()
