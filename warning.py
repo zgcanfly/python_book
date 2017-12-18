@@ -80,8 +80,7 @@ def check_mem():
 
 def check_cpu():
     Cpu_usage = psutil.cpu_percent()
-    Cpu_usage = Cpu_usage.append("%")
-    print(Cpu_usage)
+    print(str(Cpu_usage)+"%")
 if __name__=='__main__':
     check_disk()
     check_mem()
