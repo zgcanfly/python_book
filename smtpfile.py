@@ -27,16 +27,5 @@ def sendEmail():
         print("mail has been send success")
     except smtplib.SMTPException as e:
         print(e)
-def send_mail2(SMTP_host,from_account,from_passwd,to_account,subject,content):
-    email_client= smtplib.SMTP(SMTP_host)
-    email_client.login(from_account,from_passwd)
-    #create mesg
-
-    msg=MIMEText(content,'plain','utf-8')
-    msg['Subject']=Header(subject,'utf-8')
-    msg['From']=from_account
-    msg['To']=to_account
-    email_client.sendmail(from_account,to_account,msg.as_string())
-    email_client.quit()
 if __name__== '__main__':
     sendEmail()

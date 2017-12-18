@@ -7,6 +7,7 @@ import os
 import socket
 import smtplib
 from email.header import Header
+from multiprocessing import cpu_count
 from email.mime.text import MIMEText
 
 #第三方SMTP服务
@@ -18,11 +19,18 @@ sender = '15180641712@163.com'
 receivers = ['2467815216@qq.com']
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
-content=hostname
+content="测试mail"
 title='Pdt服务器状态预警'
-
 time_str =time.strftime("%Y-%m-%d",time.localtime())
 file_name="./"+time_str+".log"
+cpu_count=cpu_count()
+
+
+
+
+
+
+
 
 def sendEmail():
     message = MIMEText(content,'plain','utf-8')#内容，格式，编码
@@ -37,17 +45,6 @@ def sendEmail():
         print("mail has been send success\n")
     except smtplib.SMTPException as e:
         print(e)
-#def send_mail2(SMTP_host,from_account,from_passwd,to_account,subject,content):
-#    email_client= smtplib.SMTP(SMTP_host)
-#    email_client.login(from_account,from_passwd)
-    #create mesg
-
-#    msg=MIMEText(content,'plain','utf-8')
-#   msg['Subject']=Header(subject,'utf-8')
-#    msg['From']=from_account
-#    msg['To']=to_account
-#    email_client.sendmail(from_account,to_account,msg.as_string())
-#    email_client.quit()
 
 if os.path.exists(file_name)== False:
     os.mknod(file_name)
@@ -71,15 +68,6 @@ print_str="";
 if (print_type==1) or isset(sys.argv,"mem"):
     memory_convent=1024*1024
     mem=psutil.virtual_memory()
-    print_str+="内存状态如下:\n"
-    print_str=print_str+"系统的内存容量为: "+str( mem.total/( memory_convent ) ) + " MB\n"
-    print_str = print_str + "   系统的内存以使用容量为: " + str(mem.used / (memory_convent)) + " MB\n"
-    print_str = print_str + "   系统可用的内存容量为: " + str(mem.total / (memory_convent) - mem.used / (1024 * 1024)) + "MB\n"
-    print_str = print_str + "   内存的buffer容量为: " + str(mem.buffers / (memory_convent)) + " MB\n"
-    print_str = print_str + "   内存的cache容量为:" + str(mem.cached / (memory_convent)) + " MB\n"
-if int(mem.total / (memory_convent) - mem.used / (1024 * 1024)) < 3000:
-   content=hostname+"("+ip+")"+"：服务器内存值过低，请悉知"
-   sendEmail()
 
 #获取cpu的相关信息
 if (print_type==1) or isset(sys.argv,"cpu"):
@@ -112,10 +100,11 @@ if (print_type == 1) or isset(sys.argv, "user"):
 
 
 def motinor():
+    #mem warning
     if int(mem.total / (memory_convent) - mem.used / (1024 * 1024)) < 3000:
-        content = hostname + "：服务器内存值过低，请悉知"
+        content = hostname + "(" + ip + ")" + "：服务器内存值过低，请悉知"
         sendEmail()
-    if
+
 
 print_str += "---------------------------------------------------------------\n"
 print(print_str)
