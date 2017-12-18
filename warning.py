@@ -10,7 +10,7 @@ import smtplib
 
 default_disk="80%"
 default_mem=1000
-default_cpu="80"
+default_cpu="80%"
 
 content = '来自火星的空邮件'
 title = 'Pdt服务器预警'
@@ -81,7 +81,7 @@ def check_mem():
 
 def check_cpu():
     Cpu_usage = psutil.cpu_percent()
-    if int_value(Cpu_usage) > int_value(default_cpu)
+    if Cpu_usage > int_value(default_cpu):
         content=hostname + "(" + ip + ")" + ":cpu利用率过高，请悉知"+"\n当前cpu利用率为:" +str(Cpu_usage)+"%"
         sendEmail(content)
 if __name__=='__main__':
