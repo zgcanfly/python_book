@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6077e50-3779-4bd2-a188-acd70ea2a495" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/warning.py" afterPath="$PROJECT_DIR$/warning.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlutil.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wenzipaqu.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/2017-12-04.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/2017-12-12.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/2017-12-14.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/2017-12-15.log" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,13 +32,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="warning.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="warning.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/warning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="72" column="16" lean-forward="true" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
+            <state relative-caret-position="293">
+              <caret line="68" column="26" lean-forward="true" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="26" />
               <folding>
                 <element signature="e#14#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urlutil.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlutil.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-48">
+              <caret line="17" column="18" lean-forward="false" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+              <folding>
+                <element signature="e#15#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wenzipaqu.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/wenzipaqu.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+              <folding>
+                <element signature="e#14#27#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,31 +118,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2017-12-14.log" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2017-12-14.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="diskstatus.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/diskstatus.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
               <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="newclass.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/newclass.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="21" lean-forward="false" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -132,6 +142,7 @@
       <find>name</find>
       <find>send_mail2</find>
       <find>cpu</find>
+      <find>count</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -178,14 +189,16 @@
         <option value="$PROJECT_DIR$/pythoncommand.py" />
         <option value="$PROJECT_DIR$/systemstatus.py" />
         <option value="$PROJECT_DIR$/warning.py" />
+        <option value="$PROJECT_DIR$/urlutil.py" />
+        <option value="$PROJECT_DIR$/wenzipaqu.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="10" />
+    <option name="x" value="628" />
     <option name="y" value="22" />
-    <option name="width" value="1430" />
-    <option name="height" value="816" />
+    <option name="width" value="1440" />
+    <option name="height" value="824" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -245,43 +258,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.pythoncommand">
-    <configuration default="false" name="systemstatus" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="python_book" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/systemstatus.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="diskstatus" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="python_book" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/diskstatus.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.wenzipaqu">
     <configuration default="false" name="mysql_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -331,6 +308,42 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python_book" />
       <option name="SCRIPT_NAME" value="$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="urlutil" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python_book" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/urlutil.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="wenzipaqu" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python_book" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/wenzipaqu.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -401,19 +414,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.systemstatus" />
-      <item index="1" class="java.lang.String" itemvalue="Python.diskstatus" />
-      <item index="2" class="java.lang.String" itemvalue="Python.mysql_test" />
-      <item index="3" class="java.lang.String" itemvalue="Python.pythoncommand" />
-      <item index="4" class="java.lang.String" itemvalue="Python._pydev_execfile" />
+      <item index="0" class="java.lang.String" itemvalue="Python.mysql_test" />
+      <item index="1" class="java.lang.String" itemvalue="Python.pythoncommand" />
+      <item index="2" class="java.lang.String" itemvalue="Python._pydev_execfile" />
+      <item index="3" class="java.lang.String" itemvalue="Python.urlutil" />
+      <item index="4" class="java.lang.String" itemvalue="Python.wenzipaqu" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.pythoncommand" />
-        <item index="1" class="java.lang.String" itemvalue="Python._pydev_execfile" />
-        <item index="2" class="java.lang.String" itemvalue="Python.mysql_test" />
-        <item index="3" class="java.lang.String" itemvalue="Python.systemstatus" />
-        <item index="4" class="java.lang.String" itemvalue="Python.diskstatus" />
+        <item index="0" class="java.lang.String" itemvalue="Python.wenzipaqu" />
+        <item index="1" class="java.lang.String" itemvalue="Python.urlutil" />
+        <item index="2" class="java.lang.String" itemvalue="Python.pythoncommand" />
+        <item index="3" class="java.lang.String" itemvalue="Python._pydev_execfile" />
+        <item index="4" class="java.lang.String" itemvalue="Python.mysql_test" />
       </list>
     </recent_temporary>
   </component>
@@ -625,13 +638,13 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="22" width="1430" height="816" extended-state="6" />
+    <frame x="628" y="22" width="1440" height="824" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25174826" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25174826" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21515152" sideWeight="0.50703126" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891247" sideWeight="0.49296874" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20397352" sideWeight="0.49296874" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -668,20 +681,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/actionsql.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/list_test1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/for.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -884,6 +883,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="721" column="0" lean-forward="false" selection-start-line="721" selection-start-column="0" selection-end-line="721" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1019,10 +1019,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/warning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="72" column="16" lean-forward="true" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
+        <state relative-caret-position="293">
+          <caret line="68" column="26" lean-forward="true" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="26" />
           <folding>
             <element signature="e#14#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlutil.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-48">
+          <caret line="17" column="18" lean-forward="false" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+          <folding>
+            <element signature="e#15#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wenzipaqu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+          <folding>
+            <element signature="e#14#27#0" expanded="true" />
           </folding>
         </state>
       </provider>
