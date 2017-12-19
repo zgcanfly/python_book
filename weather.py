@@ -9,7 +9,8 @@ import smtplib
 
 content = '来自Cortana的空邮件'
 title = '来自小娜的天气预警'
-status='雨'
+status='晴'
+url='http://www.weather.com.cn/weather/101020600.shtml'
 
 def sendEmail(content):#定义邮件报警
     mail_host = "smtp.163.com"
@@ -32,8 +33,11 @@ def sendEmail(content):#定义邮件报警
 
 def weather():
     sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8')
-
-    r=requests.get('http://www.weather.com.cn/weather/101020600.shtml',timeout=30)
+    try:
+        r=requests.get(url,timeout=30)
+    except requests.RequestException as e:
+        content=e+"天气url请求失败，请检查docker of cortana ！"
+        sendEmail(content)
     r.raise_for_status()
     r.encoding='utf-8'
 
@@ -48,11 +52,7 @@ def weather():
         temp1=rtemp1[i].split('>')[1].split('<')[0]
         temp2=rtemp2[i].split('>')[1].split('<')[0]
         tplt="{0:^10}\t{1:{4}^10}\t{2:}\t{3:<}\t{4:}"
-    #    print(tplt.format(data,wea,temp1,"~"+temp2,chr(12288)))
         water=tplt.format(data,wea,temp1,"~"+temp2,chr(12288))
-    #    water=list(water)
-    #    print(water)
-    #   print(wea)
         if status in wea:
             content=str(water)+"亲爱的主人 检测到天气有雨，出门请备伞! 出入平安哦～"
             sendEmail(content)
