@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6077e50-3779-4bd2-a188-acd70ea2a495" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlutil.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wenzipaqu.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2017-12-04.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2017-12-12.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2017-12-14.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2017-12-15.log" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,8 +29,8 @@
       <file leaf-file-name="warning.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/warning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="68" column="26" lean-forward="true" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="26" />
+            <state relative-caret-position="-860">
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding>
                 <element signature="e#14#23#0" expanded="true" />
               </folding>
@@ -56,13 +50,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wenzipaqu.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="wenzipaqu.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wenzipaqu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+            <state relative-caret-position="210">
+              <caret line="14" column="15" lean-forward="true" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
               <folding>
                 <element signature="e#14#27#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="weather.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/weather.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding>
+                <element signature="e#24#33#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,16 +119,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
               <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="28" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="diskstatus.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/diskstatus.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -191,14 +187,15 @@
         <option value="$PROJECT_DIR$/warning.py" />
         <option value="$PROJECT_DIR$/urlutil.py" />
         <option value="$PROJECT_DIR$/wenzipaqu.py" />
+        <option value="$PROJECT_DIR$/weather.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="628" />
-    <option name="y" value="22" />
+    <option name="x" value="714" />
+    <option name="y" value="24" />
     <option name="width" value="1440" />
-    <option name="height" value="824" />
+    <option name="height" value="822" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -258,25 +255,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.wenzipaqu">
-    <configuration default="false" name="mysql_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="python_book" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mysql_test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.weather">
     <configuration default="false" name="pythoncommand" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -349,6 +328,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
+    <configuration default="false" name="weather" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python_book" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/weather.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -414,19 +411,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.mysql_test" />
-      <item index="1" class="java.lang.String" itemvalue="Python.pythoncommand" />
-      <item index="2" class="java.lang.String" itemvalue="Python._pydev_execfile" />
-      <item index="3" class="java.lang.String" itemvalue="Python.urlutil" />
-      <item index="4" class="java.lang.String" itemvalue="Python.wenzipaqu" />
+      <item index="0" class="java.lang.String" itemvalue="Python.pythoncommand" />
+      <item index="1" class="java.lang.String" itemvalue="Python._pydev_execfile" />
+      <item index="2" class="java.lang.String" itemvalue="Python.urlutil" />
+      <item index="3" class="java.lang.String" itemvalue="Python.wenzipaqu" />
+      <item index="4" class="java.lang.String" itemvalue="Python.weather" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.wenzipaqu" />
-        <item index="1" class="java.lang.String" itemvalue="Python.urlutil" />
-        <item index="2" class="java.lang.String" itemvalue="Python.pythoncommand" />
-        <item index="3" class="java.lang.String" itemvalue="Python._pydev_execfile" />
-        <item index="4" class="java.lang.String" itemvalue="Python.mysql_test" />
+        <item index="0" class="java.lang.String" itemvalue="Python.weather" />
+        <item index="1" class="java.lang.String" itemvalue="Python.wenzipaqu" />
+        <item index="2" class="java.lang.String" itemvalue="Python.urlutil" />
+        <item index="3" class="java.lang.String" itemvalue="Python.pythoncommand" />
+        <item index="4" class="java.lang.String" itemvalue="Python._pydev_execfile" />
       </list>
     </recent_temporary>
   </component>
@@ -602,7 +599,49 @@
       <option name="project" value="LOCAL" />
       <updated>1513567643311</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="up files">
+      <created>1513595119015</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1513595119015</updated>
+    </task>
+    <task id="LOCAL-00025" summary="add weather script file">
+      <created>1513673678882</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1513673678882</updated>
+    </task>
+    <task id="LOCAL-00026" summary="fix addr of 浦东">
+      <created>1513674068256</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1513674068256</updated>
+    </task>
+    <task id="LOCAL-00027" summary="fix URL requset">
+      <created>1513674528199</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1513674528199</updated>
+    </task>
+    <task id="LOCAL-00028" summary="fix weather &quot;雨&quot;">
+      <created>1513674623817</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1513674623817</updated>
+    </task>
+    <task id="LOCAL-00029" summary="fix weather &quot;雨&quot;">
+      <created>1513674972969</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1513674972969</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -638,13 +677,13 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="628" y="22" width="1440" height="824" extended-state="0" />
+    <frame x="714" y="24" width="1440" height="822" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25174826" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21515152" sideWeight="0.50703126" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20397352" sideWeight="0.49296874" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20451528" sideWeight="0.49296874" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -674,20 +713,17 @@
     <MESSAGE value="chang cpu function" />
     <MESSAGE value="fix cpu function" />
     <MESSAGE value="up files" />
-    <option name="LAST_COMMIT_MESSAGE" value="up files" />
+    <MESSAGE value="add weather script file" />
+    <MESSAGE value="fix addr of 浦东" />
+    <MESSAGE value="fix URL requset" />
+    <MESSAGE value="fix weather &quot;雨&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix weather &quot;雨&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/for.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fastone.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1017,16 +1053,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/warning.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="68" column="26" lean-forward="true" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="26" />
-          <folding>
-            <element signature="e#14#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlutil.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-48">
@@ -1039,10 +1065,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wenzipaqu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+        <state relative-caret-position="210">
+          <caret line="14" column="15" lean-forward="true" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
           <folding>
             <element signature="e#14#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/warning.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-860">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="e#14#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weather.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
