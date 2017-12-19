@@ -45,12 +45,12 @@ def weather():
     rwea = re.findall(r'\"wea\">.*?</p>',r.text)
     rtemp1 = re.findall(r'\/<i>.*?</i>',r.text)
     rtemp2 = re.findall(r'<span>\d+\.?\d*</span>',r.text)
-
+#    print(rwea,rtemp1,rtemp2)
     for i in range(6):
         data = rdata[i].split('>')[1].split('<')[0]
         wea = rwea[i].split('>')[1].split('<')[0]
         temp1=rtemp1[i].split('>')[1].split('<')[0]
-        temp2=rtemp2[i].split('>')[1].split('<')[0]
+        temp2=rwea[i].split('>')[1].split('<')[0]
         tplt="{0:^10}\t{1:{4}^10}\t{2:}\t{3:<}\t{4:}"
         water=tplt.format(data,wea,temp1,"~"+temp2,chr(12288))
         if status in wea:
