@@ -54,7 +54,7 @@ def weather():
         tplt="{0:^10}\t{1:{4}^10}\t{2:}\t{3:<}\t{4:}"
         water=tplt.format(data,wea,temp1,"~"+temp2,chr(12288))
         if status in wea:
-            content=str(water)+"亲爱的主人 检测到天气有雨，出门请备伞! 出入平安哦～"
+            content=str(water)+"亲爱的主人 检测到天气有雨  出门请备伞!  出入平安哦～"
             sendEmail(content)
 if __name__=='__main__':
    weather()
