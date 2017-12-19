@@ -9,7 +9,7 @@ import smtplib
 
 content = '来自Cortana的空邮件'
 title = '来自小娜的天气预警'
-status='雨'
+status='晴'
 url='http://www.weather.com.cn/weather/101020600.shtml'
 
 def sendEmail(content):#定义邮件报警
