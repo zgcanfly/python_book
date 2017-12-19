@@ -33,7 +33,7 @@ def sendEmail(content):#定义邮件报警
 def weather():
     sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8')
 
-    r=requests.get('http://www.weather.com.cn/weather/101120301.shtml',timeout=30)
+    r=requests.get('http://www.weather.com.cn/weather/101020600.shtml',timeout=30)
     r.raise_for_status()
     r.encoding='utf-8'
 
