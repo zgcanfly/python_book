@@ -1,3 +1,4 @@
+#encoding=utf-8
 # -*- coding: utf-8 -*-
 import re
 import requests
@@ -25,7 +26,7 @@ tablename = 'weather'
 #测试数据
 date=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 wea='雨'
-message='雨'
+message='0'
 
 
 db = pymysql.connect(host,user,passwd,base,charset="utf8")
@@ -46,7 +47,7 @@ def createDB():
     print(results)
     db.close()
 def createTable():
-    createtablesql="create table "+tablename+" (id int(11) primary key auto_increment,date varchar(128),wea varchar(128), message varchar(128)) engine = innodb auto_increment = 1 default charset=utf8"
+    createtablesql="create table "+tablename+" (id int(11) primary key auto_increment,date varchar(128),wea nvarchar(128), message nvarchar(128)) engine = innodb auto_increment = 1 default charset=utf8"
     try:
         cursor.execute(createtablesql)
         db.commit()
@@ -65,8 +66,14 @@ def insertDB(date,wea,message):
         db.rollback()
     db.close()
 
-
-
+def selectDB():
+    selectsql="select * from weather"
+    try:
+        cursor.execute(selectsql)
+    except:
+        pass
+    results=cursor.fetchall()
+    print(results)
 def sendEmail(content):  # 定义邮件报警
     mail_host = "smtp.163.com"
     mail_user = "15180641712@163.com"
@@ -102,7 +109,7 @@ def weather():
     rtemp1 = re.findall(r'\/<i>.*?</i>', r.text)
     rtemp2 = re.findall(r'<span>\d+\.?\d*</span>', r.text)
     #    print(rwea,rtemp1,rtemp2)
-    for i in range(1):
+    for i in range(6):
         data = rdata[i].split('>')[1].split('<')[0]
         wea = rwea[i].split('>')[1].split('<')[0]
         temp1 = rtemp1[i].split('>')[1].split('<')[0]
@@ -113,14 +120,13 @@ def weather():
         if status in wea:
             content = str(water) + "亲爱的主人 检测到天气有雨  出门请备伞!  出入平安哦～"
             sendEmail(content)
-            #message=str(water)
-            #wea=str(wea)
-            #print(wea)
-            #print(message)
+            message=str(temp1)
+            wea=str(wea)
             insertDB(date,wea,message)
 
 if __name__ == '__main__':
-    #weather()
+    weather()
     #createDB()
     #createTable()
-    insertDB(date,wea,message)
+    #insertDB(date,wea,message)
+    #selectDB()
