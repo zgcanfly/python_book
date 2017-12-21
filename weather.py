@@ -7,11 +7,12 @@ from email.mime.text import MIMEText
 import sys
 import smtplib
 import pymysql
+import time
 
 url = 'http://www.weather.com.cn/weather/101020600.shtml'
 content = '来自Cortana的空邮件'
 title = '来自小娜的天气预警'
-status = '晴'
+status = '雨'
 
 host = '192.168.1.74'
 base = 'yuangg'
@@ -22,16 +23,18 @@ database = 'cortana'
 tablename = 'weather'
 
 #测试数据
-data='testdata'
-wea='testwea'
-message='testchr'
+date=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+wea='雨'
+message='雨'
 
 
-db = pymysql.connect(host, user, passwd, base)
+db = pymysql.connect(host,user,passwd,base,charset="utf8")
 cursor = db.cursor()
 
 def createDB():
-    createdbsql = "create database if not exists `" + database + "` default character set gbk collate gbk_chinese_ci"
+    db = pymysql.connect(host, user, passwd)
+    cursor = db.cursor()
+    createdbsql = "create database if not exists `" + base + "` DEFAULT CHARSET utf8 COLLATE utf8_general_ci;"
     try:
         cursor.execute(createdbsql)
         db.commit()
@@ -43,24 +46,26 @@ def createDB():
     print(results)
     db.close()
 def createTable():
-    createtablesql="create table "+tablename+" (id int(11) primary key auto_increment,date varchar(25),wea varchar(25), message varchar(128))"
+    createtablesql="create table "+tablename+" (id int(11) primary key auto_increment,date varchar(128),wea varchar(128), message varchar(128)) engine = innodb auto_increment = 1 default charset=utf8"
     try:
         cursor.execute(createtablesql)
         db.commit()
     except:
         db.rollback()
-    results=cursor.fetchall()
+    results=cursor.fetchone()
     print(results)
     db.close()
 
-def insertDB():
-    inserttsql="INSERT INTO weather(data, wea, message) VALUES ( "+data+","+wea+","+message+" )"
+def insertDB(date,wea,message):
+    inserttsql="INSERT INTO weather(date,wea,message) VALUES('"+date+"','"+wea+"','"+message+"')"
     try:
         cursor.execute(inserttsql)
         db.commit()
     except:
         db.rollback()
     db.close()
+
+
 
 def sendEmail(content):  # 定义邮件报警
     mail_host = "smtp.163.com"
@@ -97,7 +102,7 @@ def weather():
     rtemp1 = re.findall(r'\/<i>.*?</i>', r.text)
     rtemp2 = re.findall(r'<span>\d+\.?\d*</span>', r.text)
     #    print(rwea,rtemp1,rtemp2)
-    for i in range(6):
+    for i in range(1):
         data = rdata[i].split('>')[1].split('<')[0]
         wea = rwea[i].split('>')[1].split('<')[0]
         temp1 = rtemp1[i].split('>')[1].split('<')[0]
@@ -108,10 +113,14 @@ def weather():
         if status in wea:
             content = str(water) + "亲爱的主人 检测到天气有雨  出门请备伞!  出入平安哦～"
             sendEmail(content)
-        insertDB()
+            #message=str(water)
+            #wea=str(wea)
+            #print(wea)
+            #print(message)
+            insertDB(date,wea,message)
 
 if __name__ == '__main__':
     #weather()
-    #CreateDB()
+    #createDB()
     #createTable()
-    insertDB()
+    insertDB(date,wea,message)
