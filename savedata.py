@@ -127,7 +127,7 @@ def insert_daily_data_into_db(stock_id, daily_hist_data):
 
 if __name__ == "__main__":
     # createdatabase()
-    # createtable1()
+     #createtable1()
     # createtable2()
     warnings.filterwarnings('ignore')
     tickers = get_stock_inf()
