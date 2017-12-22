@@ -4,9 +4,9 @@ import re
 import requests
 from  bs4 import BeautifulSoup
 import io
+import smtplib
 from email.mime.text import MIMEText
 import sys
-import smtplib
 import pymysql
 import time
 
@@ -125,8 +125,8 @@ def weather():
             insertDB(date,wea,message)
 
 if __name__ == '__main__':
-    weather()
+    #weather()
     #createDB()
     #createTable()
     #insertDB(date,wea,message)
-    #selectDB()
+    selectDB()
