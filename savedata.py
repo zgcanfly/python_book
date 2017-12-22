@@ -86,7 +86,7 @@ def get_stock_inf():
 
 
 def get_daily_hist_data(ticker):
-    a = ts.get_k_data(ticker, start='2010-01-01', end='2017-11-16')
+    a = ts.get_k_data(ticker, start='2010-01-01', end='2017-12-22')
     prices = []
     for i in range(len(a)):
         try:
