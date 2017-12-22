@@ -77,9 +77,6 @@ def insert_chinesestock_basic(info):
         cur = con.cursor()
         cur.executemany(final_str,info)
 
-
-
-
 def get_stock_inf():
     with con:
         cur = con.cursor()
@@ -129,9 +126,9 @@ def insert_daily_data_into_db(stock_id, daily_hist_data):
 
 
 if __name__ == "__main__":
-# createdatabase()
-# createtable1()
-# createtable2()
+    # createdatabase()
+    # createtable1()
+    # createtable2()
     warnings.filterwarnings('ignore')
     tickers = get_stock_inf()
     for i in range(2000, len(tickers)):
