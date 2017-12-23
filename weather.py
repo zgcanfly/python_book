@@ -4,9 +4,9 @@ import re
 import requests
 from  bs4 import BeautifulSoup
 import io
+import smtplib
 from email.mime.text import MIMEText
 import sys
-import smtplib
 import pymysql
 import time
 
@@ -118,7 +118,7 @@ def weather():
         water = tplt.format(data, wea, temp1, "~" + temp2, chr(12288))
         #邮件通知
         if status in wea:
-            content = str(water) + "亲爱的主人 检测到天气有雨  出门请备伞!  出入平安哦～"
+            content = str(water) + "亲爱的主人 检测到天气有"+wea+"  出门请备伞!  出入平安哦～"
             sendEmail(content)
             message=str(temp1)
             wea=str(wea)

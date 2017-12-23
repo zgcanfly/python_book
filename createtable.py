@@ -6,7 +6,7 @@ import pymysql
 host='192.168.1.74'
 base='yuangg'
 passwd='password'
-user= 'root'
+user='root'
 
 
 database=base
@@ -81,6 +81,6 @@ def selectdata():
 #createtable()
 #insertdata()
 #dropdatabase()
-#showdatabase()
+showdatabase()
 
-selectdata()
+#selectdata()

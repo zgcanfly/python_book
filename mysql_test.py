@@ -10,11 +10,8 @@ class MySqLCommand(object):
         self.user = user
         self.password = password
         self.db = db
-        self.table = table
-    def connectMysql(self):
         try:
             self.conn = pymysql.connect(host=self.host,port=self.port,user=self.user,password=self.password,db=self.db,charset='utf8')
-
             self.cursor = self.conn.cursor()
         except:
             print('connect mysql error.')
@@ -37,7 +34,7 @@ class MySqLCommand(object):
     def updateMysqlSN(self,name,sex):
         sql = "UPDATE"+self.table + "SET sex="+sex+""+"WHERE name=" + name + ""
         print("update sn:"+sql)
-        try
+        try:
             self.cursor.execute(sql)
             self.conn.commit()
         except:
@@ -45,3 +42,17 @@ class MySqLCommand(object):
     def closeMysql(self):
         self.cursor.close()
         self.conn.close()
+
+def showdatabase():
+    cursor=MySqLCommand('192.168.1.74','3306','root','password','yuangg'
+                        )
+
+    showdatabasesql='show databases'
+    try:
+        cursor.execute(showdatabasesql)
+    except:
+        print("Can't connect MySQL server ")
+    results=cursor.fetchall()
+    print(results)
+
+showdatabase()
