@@ -21,4 +21,3 @@ def sendEmail(content):  # 定义邮件报警
         print("mail has been send success")
     except smtplib.SMTPException as e:
         print(e)
-
