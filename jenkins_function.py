@@ -9,13 +9,17 @@ server=jenkins.Jenkins(url=jenkins_server_url,username=jenkins_id,password=jenki
 project='Ansible SSH List Update'
 
 #
-# server.build_job(project)
-# info=server.get_job_info(project)['lastBuild']
-# number=info['number']
-# number+=1
+server.build_job(project)
+
 # time.sleep(10)
 # tinfo=server.get_build_info(project,number)
 
-deploylist=server.get_all_jobs()
-for i in range(len(deploylist)):
-    print(deploylist[i]['name'])
+# deploylist=server.get_all_jobs()
+# for i in range(len(deploylist)):
+#     print(deploylist[i]['name'])
+number = server.get_job_info(project)['lastCompletedBuild']['number']
+number +=1
+time.sleep(10)
+tinfo = server.get_build_info(project, number)
+if tinfo['result'] == 'SUCCESS':
+    print(number,tinfo['result'])

@@ -9,17 +9,17 @@ jenkins_id='zgyang'
 jenkins_token='f4f892e1871ae8b437ca4c990895b5ca'
 server=jenkins.Jenkins(url=jenkins_server_url,username=jenkins_id,password=jenkins_token)
 project=''
-
+timeout=20
 
 def deploy(project):
     server.build_job(project)
-    info = server.get_job_info(project)['lastBuild']
-    number = info['number']
+    number = server.get_job_info(project)['lastCompletedBuild']['number']
     number += 1
-    time.sleep(10)
+    time.sleep(timeout)
     tinfo = server.get_build_info(project, number)
     return tinfo
-
+def rollback():
+    return "功能正在完善中...."
 def RemoveChinese(strValue):
     pass
 
@@ -47,10 +47,12 @@ def onQQMessage(bot, contact, member, content):
     #获取项目列表及发布列表
     project_list = []
     deploy_list = []
+    rollback_list = []
     joblist = server.get_all_jobs()
     for i in range(len(joblist)):
         project_list.append(joblist[i]['name'])
         deploy_list.append('发布'+joblist[i]['name'])
+        rollback_list.append('回滚'+joblist[i]['name'])
 
 #文字聊天部分
     if content == '天气怎么样':
@@ -61,16 +63,18 @@ def onQQMessage(bot, contact, member, content):
         sendEmail(content)
         bot.SendTo(contact, '什么邮件')
  #jenkins部分
+    elif content == 'jenkins帮助':
+        bot.SendTo(contact,'jenkins操作: 1.项目列表   2.发布列表   3.发布project  4.project回滚 ')
     elif content == '项目列表':
         bot.SendTo(contact, str(project_list))
     elif content == '发布列表':
         bot.SendTo(contact, str(deploy_list))
-    elif content == '测试发布':
-        bot.SendTo(contact,str(project_list))
-        bot.SendTo(contact,str(deploy_list))
+    elif content in rollback_list:
+        bot.SendTo(contact, str(rollback()))
 #发布项目
     if content in deploy_list:
         project=content[2:]
+        bot.SendTo(contact, '项目发布中，请稍等20s!')
         deploystatus = deploy(project)
         print(deploystatus['result'])
         if deploystatus['result'] == 'SUCCESS':
