@@ -1,8 +1,9 @@
 #coding=utf-8
 from flask import Flask
 from flask import make_response
+from flask import  redirect
 import json
-
+from flask import abort
 
 app = Flask(__name__)
 
@@ -36,10 +37,16 @@ def set_cookie():
     response.set_cookie('username','evancss')
     return response
 
+@app.route('/redir')
+def redir():
+    return  redirect('http://www.baidu.com')
 
 
-
-
+app.route('/user/<id>')
+def get_user(id):
+    if int(id)>10:
+        abort(404)
+    return '<h1>hello,%s</h1>'% id
 
 
 
