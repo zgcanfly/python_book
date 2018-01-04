@@ -25,7 +25,7 @@ database = 'cortana'
 tablename = 'weather'
 
 #测试数据
-today=datetime.date.today()
+date=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 wea='雨'
 message='0'
 
@@ -75,7 +75,7 @@ def selectDB():
         pass
     results=cursor.fetchall()
     print(results)
-    db.close()
+    #插入单行数据时候可以使用db.close,多行时 不能在这里使用db.close
 def sendEmail(content):  # 定义邮件报警
     mail_host = "smtp.163.com"
     mail_user = "15180641712@163.com"
@@ -123,10 +123,9 @@ def weather():
             content =  data +temp1+ "   亲爱的主人 检测到天气有"+wea+"  出门请备伞!  出入平安哦～"
             message=str(temp1)
             wea=str(wea)
-            date=str(today)
             insertDB(date,wea,message)
             sendEmail(content)
-
+    db.close()
 if __name__ == '__main__':
     weather()
     #createDB()
