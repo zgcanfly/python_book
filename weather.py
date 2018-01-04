@@ -8,6 +8,7 @@ import smtplib
 from email.mime.text import MIMEText
 import sys
 import pymysql
+import datetime
 import time
 
 url = 'http://www.weather.com.cn/weather/101020600.shtml'
