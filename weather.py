@@ -123,6 +123,7 @@ def weather():
             content =  data +temp1+ "   亲爱的主人 检测到天气有"+wea+"  出门请备伞!  出入平安哦～"
             message=str(temp1)
             wea=str(wea)
+            date=str(date)
             insertDB(date,wea,message)
             sendEmail(content)
 
