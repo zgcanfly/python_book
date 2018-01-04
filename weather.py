@@ -24,7 +24,7 @@ database = 'cortana'
 tablename = 'weather'
 
 #测试数据
-date=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+date=datetime.date.today()
 wea='雨'
 message='0'
 
