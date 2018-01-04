@@ -48,7 +48,7 @@ def createDB():
     print(results)
     db.close()
 def createTable():
-    createtablesql="create table "+tablename+" (id int(11) primary key auto_increment,date varchar(128),data varchar(128),wea nvarchar(128), message nvarchar(128)) engine = innodb auto_increment = 1 default charset=utf8"
+    createtablesql="create table "+tablename+" (id int(11) primary key auto_increment,date varchar(128),data nvarchar(128),wea nvarchar(128), message nvarchar(128)) engine = innodb auto_increment = 1 default charset=utf8"
     try:
         cursor.execute(createtablesql)
         db.commit()
@@ -58,7 +58,7 @@ def createTable():
     print(results)
     db.close()
 
-def insertDB(date,wea,message):
+def insertDB(date,data,wea,message):
     inserttsql="INSERT INTO weather(date,wea,message) VALUES('"+date+"','"+data+",'"+wea+"','"+message+"')"
     try:
         cursor.execute(inserttsql)
@@ -127,16 +127,18 @@ def weather():
            # content =  data +temp1+ "   亲爱的主人 检测到天气有"+wea+"  出门请备伞!  出入平安哦～"
             message=str(temp1)
             wea=str(wea)
+            data=str(data)
             insertDB(date,data,wea,message)
+            print(date, data, wea, message)
             #sendEmail(content)
     # temp3=selectDB()
     # content = "   亲爱的主人 检测到天气有" + wea + "  出门请备伞!  出入平安哦～"+str(temp3)
     # print(content)
     db.close()
 if __name__ == '__main__':
-    #weather()
+    weather()
     #createDB()
     #createTable()
     #insertDB(date,data,wea,message)
-    selectDB()
+    #selectDB()
 
