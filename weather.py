@@ -121,11 +121,12 @@ def weather():
         if status in wea:
            # content =  data +temp1+ "   亲爱的主人 检测到天气有"+wea+"  出门请备伞!  出入平安哦～"
             results=selectDB()
-            content = "亲爱的主人 检测到天气有"+wea+"  出门请备伞!  出入平安哦～\n"+results
-            sendEmail(content)
+            print(results)
+            #content = "亲爱的主人 检测到天气有"+wea+"  出门请备伞!  出入平安哦～\n"+results
+            #sendEmail(content)
             message=str(temp1)
             wea=str(wea)
-            insertDB(date,wea,message)
+            #insertDB(date,wea,message)
 
     db.close()
 if __name__ == '__main__':
