@@ -16,7 +16,7 @@ content = '来自Cortana的空邮件'
 title = '来自小娜的天气预警'
 status = '雨'
 
-host = '172.19.93.57'
+host = '106.15.224.237'
 base = 'cortana'
 passwd = 'password'
 user = 'root'
@@ -48,7 +48,7 @@ def createDB():
     print(results)
     db.close()
 def createTable():
-    createtablesql="create table "+tablename+" (id int(11) primary key auto_increment,date varchar(128),wea nvarchar(128), message nvarchar(128)) engine = innodb auto_increment = 1 default charset=utf8"
+    createtablesql="create table "+tablename+" (id int(11) primary key auto_increment,date varchar(128),data varchar(128),wea nvarchar(128), message nvarchar(128)) engine = innodb auto_increment = 1 default charset=utf8"
     try:
         cursor.execute(createtablesql)
         db.commit()
@@ -59,7 +59,7 @@ def createTable():
     db.close()
 
 def insertDB(date,wea,message):
-    inserttsql="INSERT INTO weather(date,wea,message) VALUES('"+date+"','"+wea+"','"+message+"')"
+    inserttsql="INSERT INTO weather(date,wea,message) VALUES('"+date+"','"+data+",'"+wea+"','"+message+"')"
     try:
         cursor.execute(inserttsql)
         db.commit()
@@ -67,13 +67,18 @@ def insertDB(date,wea,message):
         db.rollback()
 #插入单行数据时候可以使用db.close,多行时 不能在这里使用db.close
 def selectDB():
-    selectsql=" select * from weather where date="+date+""
+    selectsql=" select * from weather where date='"+date+"'"
+    # print(selectsql)
     try:
         cursor.execute(selectsql)
     except:
         pass
     results=cursor.fetchall()
-    print(results)
+    for row in results:
+        ldate = row[1]
+        lwea = row[2]
+        lmessage = row[3]
+        print(ldate,lwea,lmessage)
     db.close()
 def sendEmail(content):  # 定义邮件报警
     mail_host = "smtp.163.com"
@@ -120,18 +125,18 @@ def weather():
         #邮件通知
         if status in wea:
            # content =  data +temp1+ "   亲爱的主人 检测到天气有"+wea+"  出门请备伞!  出入平安哦～"
-            #content = "亲爱的主人 检测到天气有"+wea+"  出门请备伞!  出入平安哦～\n"+results
-            #sendEmail(content)
             message=str(temp1)
             wea=str(wea)
-            insertDB(date,wea,message)
-    results = selectDB()
-    print(results)
+            insertDB(date,data,wea,message)
+            #sendEmail(content)
+    # temp3=selectDB()
+    # content = "   亲爱的主人 检测到天气有" + wea + "  出门请备伞!  出入平安哦～"+str(temp3)
+    # print(content)
     db.close()
 if __name__ == '__main__':
-    weather()
+    #weather()
     #createDB()
     #createTable()
-    #insertDB(date,wea,message)
-    #selectDB()
+    #insertDB(date,data,wea,message)
+    selectDB()
 
