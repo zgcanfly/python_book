@@ -25,7 +25,7 @@ database = 'cortana'
 tablename = 'weather'
 
 #测试数据
-date=datetime.date.today()
+today=datetime.date.today()
 wea='雨'
 message='0'
 
@@ -123,7 +123,7 @@ def weather():
             content =  data +temp1+ "   亲爱的主人 检测到天气有"+wea+"  出门请备伞!  出入平安哦～"
             message=str(temp1)
             wea=str(wea)
-            date=str(date)
+            date=str(today)
             insertDB(date,wea,message)
             sendEmail(content)
 
