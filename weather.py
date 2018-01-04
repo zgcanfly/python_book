@@ -25,7 +25,7 @@ database = 'cortana'
 tablename = 'weather'
 
 #测试数据
-date=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+date=time.strftime("%F", time.localtime())
 wea='雨'
 message='0'
 
@@ -65,17 +65,16 @@ def insertDB(date,wea,message):
         db.commit()
     except:
         db.rollback()
-    db.close()
-
+#插入单行数据时候可以使用db.close,多行时 不能在这里使用db.close
 def selectDB():
-    selectsql="select * from weather"
+    selectsql=" select * from weather where date="+date+""
     try:
         cursor.execute(selectsql)
     except:
         pass
     results=cursor.fetchall()
     print(results)
-    #插入单行数据时候可以使用db.close,多行时 不能在这里使用db.close
+    db.close()
 def sendEmail(content):  # 定义邮件报警
     mail_host = "smtp.163.com"
     mail_user = "15180641712@163.com"
@@ -120,11 +119,13 @@ def weather():
         water = tplt.format(data, wea, temp1, "~" + temp2, chr(12288))
         #邮件通知
         if status in wea:
-            content =  data +temp1+ "   亲爱的主人 检测到天气有"+wea+"  出门请备伞!  出入平安哦～"
+           # content =  data +temp1+ "   亲爱的主人 检测到天气有"+wea+"  出门请备伞!  出入平安哦～"
+            content = "亲爱的主人 检测到天气有"+wea+"  出门请备伞!  出入平安哦～\n"+selectDB()
+            sendEmail(content)
             message=str(temp1)
             wea=str(wea)
             insertDB(date,wea,message)
-            sendEmail(content)
+
     db.close()
 if __name__ == '__main__':
     weather()
