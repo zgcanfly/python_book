@@ -124,7 +124,7 @@ def weather():
             #sendEmail(content)
             message=str(temp1)
             wea=str(wea)
-            #insertDB(date,wea,message)
+            insertDB(date,wea,message)
     results = selectDB()
     print(results)
     db.close()
