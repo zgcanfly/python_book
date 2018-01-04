@@ -28,6 +28,7 @@ tablename = 'weather'
 date=time.strftime("%F", time.localtime())
 wea='雨'
 message='0'
+data='test'
 
 
 db = pymysql.connect(host,user,passwd,base,charset="utf8")
@@ -48,7 +49,7 @@ def createDB():
     print(results)
     db.close()
 def createTable():
-    createtablesql="create table "+tablename+" (id int(11) primary key auto_increment,date varchar(128),data nvarchar(128),wea nvarchar(128), message nvarchar(128)) engine = innodb auto_increment = 1 default charset=utf8"
+    createtablesql="create table "+tablename+" (id int(11) primary key auto_increment,date varchar(128),data varchar(128),wea nvarchar(128), message nvarchar(128)) engine = innodb auto_increment = 1 default charset=utf8"
     try:
         cursor.execute(createtablesql)
         db.commit()
@@ -59,7 +60,9 @@ def createTable():
     db.close()
 
 def insertDB(date,data,wea,message):
-    inserttsql="INSERT INTO weather(date,wea,message) VALUES('"+date+"','"+data+",'"+wea+"','"+message+"')"
+    column_str='date,data,wea,message'
+    insert_str="'"+date+"','"+data+"','"+wea+"','"+message+"'"
+    inserttsql="INSERT INTO weather(%s) VALUES(%s)"%(column_str,insert_str)
     try:
         cursor.execute(inserttsql)
         db.commit()
@@ -67,8 +70,8 @@ def insertDB(date,data,wea,message):
         db.rollback()
 #插入单行数据时候可以使用db.close,多行时 不能在这里使用db.close
 def selectDB():
-    selectsql=" select * from weather where date='"+date+"'"
-    # print(selectsql)
+    insert_str="'"+date+"'"
+    selectsql=" select * from weather where date=%s"%(insert_str)
     try:
         cursor.execute(selectsql)
     except:
@@ -76,10 +79,11 @@ def selectDB():
     results=cursor.fetchall()
     for row in results:
         ldate = row[1]
-        lwea = row[2]
-        lmessage = row[3]
-        print(ldate,lwea,lmessage)
-    db.close()
+        ldata = row[2]
+        lwea = row[3]
+        lmessage = row[4]
+        print(ldate,ldata,lwea,lmessage)
+
 def sendEmail(content):  # 定义邮件报警
     mail_host = "smtp.163.com"
     mail_user = "15180641712@163.com"
@@ -114,7 +118,6 @@ def weather():
     rwea = re.findall(r'\"wea\">.*?</p>', r.text)
     rtemp1 = re.findall(r'\/<i>.*?</i>', r.text)
     rtemp2 = re.findall(r'<span>\d+\.?\d*</span>', r.text)
-    #    print(rwea,rtemp1,rtemp2)
     for i in range(6):
         data = rdata[i].split('>')[1].split('<')[0]
         wea = rwea[i].split('>')[1].split('<')[0]
@@ -128,17 +131,14 @@ def weather():
             message=str(temp1)
             wea=str(wea)
             data=str(data)
-            insertDB(date,data,wea,message)
-            print(date, data, wea, message)
+            #insertDB(date,data,wea,message)
             #sendEmail(content)
     # temp3=selectDB()
-    # content = "   亲爱的主人 检测到天气有" + wea + "  出门请备伞!  出入平安哦～"+str(temp3)
-    # print(content)
+    content = "   亲爱的主人 检测到天气有" + wea + "  出门请备伞!  出入平安哦～\n %s "%(str(selectDB()))
     db.close()
 if __name__ == '__main__':
     weather()
     #createDB()
     #createTable()
-    #insertDB(date,data,wea,message)
-    #selectDB()
+    # selectDB()
 
