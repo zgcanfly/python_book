@@ -119,10 +119,10 @@ def weather():
         #邮件通知
         if status in wea:
             content =  data +temp1+ "   亲爱的主人 检测到天气有"+wea+"  出门请备伞!  出入平安哦～"
-            sendEmail(content)
             message=str(temp1)
             wea=str(wea)
             insertDB(date,wea,message)
+            sendEmail(content)
 
 if __name__ == '__main__':
     weather()
