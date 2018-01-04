@@ -74,6 +74,7 @@ def selectDB():
         pass
     results=cursor.fetchall()
     print(results)
+    db.close()
 def sendEmail(content):  # 定义邮件报警
     mail_host = "smtp.163.com"
     mail_user = "15180641712@163.com"
