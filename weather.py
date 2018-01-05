@@ -96,7 +96,7 @@ def selectDB():
                        'date':list_ldata,
                        'wea':list_lwea,
                        'zero':list_lmessage})
-    return  list(df)
+    return  df.get_values()
 
 def sendEmail(content):  # 定义邮件报警
     mail_host = "smtp.163.com"
@@ -145,10 +145,10 @@ def weather():
             message=str(temp1)
             wea=str(wea)
             data=str(data)
-            insertDB(date,data,wea,message)
+            # insertDB(date,data,wea,message)
     temp3=selectDB()
-    content = "   亲爱的主人 检测到天气有雨   出门请备伞!  出入平安哦～ %s "%(str(temp3))
-    # content = "   亲爱的主人 检测到天气有" + wea + "  出门请备伞!  出入平安哦～ %s "%(str(temp3))
+    content = "   亲爱的主人 检测到天气有雨  出门请备伞!  出入平安哦～\n %s "%(str(temp3))
+    # content = "   亲爱的主人 检测到天气有" + wea + "  出门请备伞!  出入平安哦～\n %s "%(str(temp3))
     print(content)
     sendEmail(content)
     db.close()
