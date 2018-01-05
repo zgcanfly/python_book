@@ -91,7 +91,6 @@ def selectDB():
         list_ldata.append(ldata)
         list_lwea.append(lwea)
         list_lmessage.append(lmessage)
-    # df = pd.DataFrame({'':list_ldata,'天气':list_lwea,'信息':list_lmessage})
     df = pd.DataFrame({
                        'date':list_ldata,
                        'wea':list_lwea,
@@ -141,14 +140,12 @@ def weather():
         water = tplt.format(data, wea, temp1, "~" + temp2, chr(12288))
         #邮件通知
         if status in wea:
-           # content =  data +temp1+ "   亲爱的主人 检测到天气有"+wea+"  出门请备伞!  出入平安哦～"
             message=str(temp1)
             wea=str(wea)
             data=str(data)
             insertDB(date,data,wea,message)
     temp3=selectDB()
     content = "  亲爱的主人 检测到天气有雨  出门请备伞!  出入平安哦～\n %s "%(str(temp3))
-    # content = "   亲爱的主人 检测到天气有" + wea + "  出门请备伞!  出入平安哦～\n %s "%(str(temp3))
     print(content)
     sendEmail(content)
     db.close()
