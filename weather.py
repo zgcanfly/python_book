@@ -147,7 +147,7 @@ def weather():
             data=str(data)
             insertDB(date,data,wea,message)
     temp3=selectDB()
-    content = "   亲爱的主人 检测到天气有雨  出门请备伞!  出入平安哦～\n %s "%(str(temp3))
+    content = "  亲爱的主人 检测到天气有雨  出门请备伞!  出入平安哦～\n %s "%(str(temp3))
     # content = "   亲爱的主人 检测到天气有" + wea + "  出门请备伞!  出入平安哦～\n %s "%(str(temp3))
     print(content)
     sendEmail(content)
