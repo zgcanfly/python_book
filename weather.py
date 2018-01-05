@@ -10,12 +10,13 @@ import sys
 import pymysql
 import datetime
 import time
-
+import pandas as pd
+#weather变量定义
 url = 'http://www.weather.com.cn/weather/101020600.shtml'
 content = '来自Cortana的空邮件'
 title = '来自小娜的天气预警'
 status = '雨'
-
+#数据库变量定义
 host = '106.15.224.237'
 base = 'cortana'
 passwd = 'password'
@@ -24,7 +25,7 @@ base = 'cortana'
 database = 'cortana'
 tablename = 'weather'
 
-#测试数据
+#测试变量定义
 date=time.strftime("%F", time.localtime())
 wea='雨'
 message='0'
@@ -70,6 +71,10 @@ def insertDB(date,data,wea,message):
         db.rollback()
 #插入单行数据时候可以使用db.close,多行时 不能在这里使用db.close
 def selectDB():
+    list_ldate=[]
+    list_ldata=[]
+    list_lwea=[]
+    list_lmessage=[]
     insert_str="'"+date+"'"
     selectsql=" select * from weather where date=%s"%(insert_str)
     try:
@@ -82,7 +87,16 @@ def selectDB():
         ldata = row[2]
         lwea = row[3]
         lmessage = row[4]
-        print(ldate,ldata,lwea,lmessage)
+        list_ldate.append(ldate)
+        list_ldata.append(ldata)
+        list_lwea.append(lwea)
+        list_lmessage.append(lmessage)
+    # df = pd.DataFrame({'':list_ldata,'天气':list_lwea,'信息':list_lmessage})
+    df = pd.DataFrame({
+                       'date':list_ldata,
+                       'wea':list_lwea,
+                       'zero':list_lmessage})
+    return  list(df)
 
 def sendEmail(content):  # 定义邮件报警
     mail_host = "smtp.163.com"
@@ -131,14 +145,15 @@ def weather():
             message=str(temp1)
             wea=str(wea)
             data=str(data)
-            #insertDB(date,data,wea,message)
-            #sendEmail(content)
-    # temp3=selectDB()
-    content = "   亲爱的主人 检测到天气有" + wea + "  出门请备伞!  出入平安哦～\n %s "%(str(selectDB()))
+            insertDB(date,data,wea,message)
+    temp3=selectDB()
+    content = "   亲爱的主人 检测到天气有雨   出门请备伞!  出入平安哦～ %s "%(str(temp3))
+    # content = "   亲爱的主人 检测到天气有" + wea + "  出门请备伞!  出入平安哦～ %s "%(str(temp3))
+    print(content)
+    sendEmail(content)
     db.close()
 if __name__ == '__main__':
     weather()
     #createDB()
-    #createTable()
+    # createTable()
     # selectDB()
-
