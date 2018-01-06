@@ -7,7 +7,7 @@ import pymongo
 import _thread
 import time
 from bs4 import BeautifulSoup
-clients=pymongo.MongoClient('127.0.0.1')
+clients=pymongo.MongoClient('106.15.224.237')
 db=clients['everydayfund']
 col1=db['fund']
 col2=db['detail']
