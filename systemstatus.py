@@ -26,12 +26,6 @@ file_name="./"+time_str+".log"
 cpu_count=cpu_count()
 
 
-
-
-
-
-
-
 def sendEmail():
     message = MIMEText(content,'plain','utf-8')#内容，格式，编码
     message['From']="{}".format(sender)
@@ -46,6 +40,14 @@ def sendEmail():
     except smtplib.SMTPException as e:
         print(e)
 
+def isset(list_arr,name):
+    if name in list_arr:
+        return True
+    else:
+        return False
+
+
+
 if os.path.exists(file_name)== False:
     os.mknod(file_name)
     handle=open(file_name,"w")
@@ -57,11 +59,7 @@ if len(sys.argv)==1:
 else:
     print_type=2
 
-def isset(list_arr,name):
-    if name in list_arr:
-        return True
-    else:
-        return False
+
 print_str="";
 
 #获取系统内存使用情况
