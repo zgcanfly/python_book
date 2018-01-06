@@ -8,7 +8,9 @@ import _thread
 import time
 from bs4 import BeautifulSoup
 clients=pymongo.MongoClient('106.15.224.237')
-db=clients['everydayfund']
+date=time.strftime("%F", time.localtime())
+dbname="fund"+date
+db=clients[dbname]
 col1=db['fund']
 col2=db['detail']
 url='http://fund.eastmoney.com/allfund.html'
