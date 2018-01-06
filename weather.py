@@ -14,7 +14,7 @@ import pandas as pd
 #weather变量定义
 url = 'http://www.weather.com.cn/weather/101020600.shtml'
 content = '来自Cortana的空邮件'
-title = '来自小娜的天气预警'
+title = 'Cortana'
 status = '雨'
 #数据库变量定义
 host = '106.15.224.237'
