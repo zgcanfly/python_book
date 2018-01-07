@@ -72,7 +72,7 @@ def get_stock_basic():
     return info
 
 def insert_chinesestock_basic(info):
-    con = pymysql.connect(host='106.15.224.23',port=3306,user='root',passwd='password',db='chinesestock',charset='utf8')
+    con = pymysql.connect(host='106.15.224.237',port=3306,user='root',passwd='password',db='chinesestock',charset='utf8')
     column_str = 'code,name,industry,timeToMarket'
     insert_str = ('%s,'*4)[:-1]
     final_str = "insert into stock_basic (%s) values (%s)"%(column_str,insert_str)
