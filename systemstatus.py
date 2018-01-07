@@ -21,8 +21,7 @@ hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
 content="测试mail"
 title='Pdt服务器状态预警'
-time_str =time.strftime("%Y-%m-%d",time.localtime())
-file_name="./"+time_str+".log"
+file_name="/tmp/systemstatus.log"
 cpu_count=cpu_count()
 
 

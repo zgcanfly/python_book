@@ -9,10 +9,13 @@ import tushare as ts
 import pymysql
 import datetime
 import warnings
+import time
 
-# con = pymysql.connect(host='192.168.1.74',port=3306,user='root',passwd='password')
-# cursor = con.cursor()
-con = pymysql.connect(host='192.168.1.74',port=3306,user='root',passwd='password',db='chinesestock')
+date=time.strftime("%F", time.localtime())
+
+
+# con = pymysql.connect(host='106.15.224.237',port=3306,user='root',passwd='password')
+con = pymysql.connect(host='106.15.224.237',port=3306,user='root',passwd='password',db='chinesestock')
 cursor = con.cursor()
 def createdatabase():
     try:
@@ -69,7 +72,7 @@ def get_stock_basic():
     return info
 
 def insert_chinesestock_basic(info):
-    con = pymysql.connect(host='192.168.1.74',port=3306,user='root',passwd='password',db='chinesestock',charset='utf8')
+    con = pymysql.connect(host='106.15.224.23',port=3306,user='root',passwd='password',db='chinesestock',charset='utf8')
     column_str = 'code,name,industry,timeToMarket'
     insert_str = ('%s,'*4)[:-1]
     final_str = "insert into stock_basic (%s) values (%s)"%(column_str,insert_str)
@@ -86,7 +89,7 @@ def get_stock_inf():
 
 
 def get_daily_hist_data(ticker):
-    a = ts.get_k_data(ticker, start='2010-01-01', end='2017-12-22')
+    a = ts.get_k_data(ticker, start='2010-01-01', end=date)
     prices = []
     for i in range(len(a)):
         try:
@@ -127,14 +130,14 @@ def insert_daily_data_into_db(stock_id, daily_hist_data):
 
 if __name__ == "__main__":
     # createdatabase()
-     #createtable1()
+    # createtable1()
     # createtable2()
     warnings.filterwarnings('ignore')
     tickers = get_stock_inf()
     for i in range(2000, len(tickers)):
         daily_hist = get_daily_hist_data(tickers[i][1])
         insert_daily_data_into_db(tickers[i][0], daily_hist)
-    # infos = get_stock_basic()
-    # insert_chinesestock_basic(infos)
-    # print("%s infos were successfully added."%len(infos))
+    infos = get_stock_basic()
+    insert_chinesestock_basic(infos)
+    print("%s infos were successfully added."%len(infos))
 
