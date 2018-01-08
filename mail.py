@@ -2,7 +2,7 @@
 from email.mime.text import MIMEText
 import smtplib
 
-title = '来自小娜的天气预警'
+title = '小娜'
 def sendEmail(content):  # 定义邮件报警
     mail_host = "smtp.163.com"
     mail_user = "15180641712@163.com"
@@ -21,3 +21,6 @@ def sendEmail(content):  # 定义邮件报警
         print("mail has been send success")
     except smtplib.SMTPException as e:
         print(e)
+if __name__=='__main__':
+    content="from mail.py"
+    sendEmail(content)

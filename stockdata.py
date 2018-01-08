@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Nov 16 15:23:54 2017
 
-@author: feng_
-"""
 import pymysql
 import tushare as ts
 import pymysql
