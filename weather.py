@@ -143,7 +143,11 @@ def weather():
             message=str(temp1)
             wea=str(wea)
             data=str(data)
-            insertDB(date,data,wea,message)
+            try:
+                insertDB(date,data,wea,message)
+            except:
+                content="Mysql数据库插入data error ，请检查数据库状态"
+                sendEmail(content)
     temp3=selectDB()
     content = "  亲爱的主人 检测到天气有雨  出门请备伞!  出入平安哦～\n %s "%(str(temp3))
     print(content)
