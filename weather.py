@@ -11,6 +11,7 @@ import pymysql
 import datetime
 import time
 import pandas as pd
+import socket
 #weather变量定义
 url = 'http://www.weather.com.cn/weather/101020600.shtml'
 content = '来自Cortana的空邮件'
@@ -30,6 +31,8 @@ date=time.strftime("%F", time.localtime())
 wea='雨'
 message='0'
 data='test'
+
+hostname = socket.gethostname()
 
 def sendEmail(content):  # 定义邮件报警
     mail_host = "smtp.163.com"
@@ -53,7 +56,7 @@ def sendEmail(content):  # 定义邮件报警
 try:
     db = pymysql.connect(host, user, passwd, base, charset="utf8")
 except:
-    content = "Mysql数据库链接错误 ，请检查数据库状态"
+    content = hostname+":Mysql数据库链接错误 ，请检查数据库状态"
     sendEmail(content)
 
 cursor = db.cursor()
@@ -151,7 +154,7 @@ def weather():
             try:
                 insertDB(date,data,wea,message)
             except:
-                content="Mysql数据库插入data error ，请检查数据库状态"
+                content=hostname +": Mysql数据库插入data error ，请检查数据库状态"
                 sendEmail(content)
     temp3=selectDB()
     content = "  亲爱的主人 检测到天气有雨  出门请备伞!  出入平安哦～\n %s "%(str(temp3))
