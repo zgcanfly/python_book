@@ -30,10 +30,10 @@ def callbackfunc(blocknum, blocksize, totalsize):
     if percent == 100:
         print('')
         input('输入任意键继续...')
-def downimg():
+def downimg(downurl):
     url='http://dlsw.baidu.com/sw-search-sp/soft/e7/10520/KanKan_V2.7.8.2126_setup.1416995191.exe'
-    filename=os.path.basename(url)
-    urllib.request.urlretrieve(url, filename, callbackfunc)
+    filename=os.path.basename(downurl)
+    urllib.request.urlretrieve(downurl, filename, callbackfunc)
 
 
 def getporhub():
@@ -44,8 +44,13 @@ def getporhub():
         print("网页失败请求！")
     response=request.urlopen(r)
     html=response.read().decode('utf-8')
-    print(html)
-
+    html.encode='utf-8'
+    rscript=re.findall(r'<script>.*?</script>',html.text)
+    rtitle=re.findall(r'<title>.*?</title>',html.text)
+    print(rscript)
+    print("\n")
+    print(rtitle)
+    # for i in range(4):
 
 
 if __name__=='__main__':
