@@ -1,14 +1,15 @@
 import urllib.request
+from urllib import request
 import sys
 import os
-import requests
 import io
+import ssl
 import re
 from  bs4 import BeautifulSoup
 import threading
 
 url = 'https://jp.pornhub.com/view_video.php?viewkey=ph597ac889773f6'
-
+ssl._create_default_https_context = ssl._create_unverified_context
 
 def callbackfunc(blocknum, blocksize, totalsize):
     '''回调函数
@@ -38,13 +39,12 @@ def downimg():
 def getporhub():
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
     try:
-        r = requests.get(url, timeout=30)
-    except requests.RequestException as e:
+        r = request.Request(url)
+    except request.RequestException as e:
         print("网页失败请求！")
-    r.raise_for_status()
-    r.encoding = 'utf-8'
-
-    print(r)
+    response=request.urlopen(r)
+    html=response.read().decode('utf-8')
+    print(html)
 
 
 
