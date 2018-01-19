@@ -51,7 +51,7 @@ def getporhub():
     title=re.sub('<.*?title>','',rtitle)
     print(title)
     print("\n")
-    for i in range(3):
+    for i in range(1):
         downurl = rdownurl[i].split('"')[2]
         downurl = re.sub('/','',downurl)
         print(downurl)
