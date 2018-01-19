@@ -6,10 +6,12 @@ import io
 import ssl
 import re
 from  bs4 import BeautifulSoup
-import threading
+# import threading
 
 url = 'https://jp.pornhub.com/view_video.php?viewkey=ph597ac889773f6'
+
 ssl._create_default_https_context = ssl._create_unverified_context
+
 
 def callbackfunc(blocknum, blocksize, totalsize):
     '''回调函数
@@ -23,13 +25,15 @@ def callbackfunc(blocknum, blocksize, totalsize):
         percent = 100
     downsize=blocknum * blocksize
     if downsize >= totalsize:
-    	downsize=totalsize
+       downsize=totalsize
     s ="%.2f%%"%(percent)+"====>"+"%.2f"%(downsize/1024/1024)+"M/"+"%.2f"%(totalsize/1024/1024)+"M \r"
     sys.stdout.write(s)
     sys.stdout.flush()
     if percent == 100:
         print('')
         input('输入任意键继续...')
+
+
 def downfile(downurl,title):
     title=title+'.mp4'
     filename=os.path.basename(title)
@@ -61,5 +65,6 @@ def getporhub():
 
 if __name__=='__main__':
     getporhub()
+
     # 启动线程下载
     # threading.Thread(target=downimg,args=('')).start()
