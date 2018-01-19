@@ -30,7 +30,7 @@ def callbackfunc(blocknum, blocksize, totalsize):
     if percent == 100:
         print('')
         input('输入任意键继续...')
-def downimg(downurl):
+def downfile(downurl):
     url='test.exe'
     filename=os.path.basename(downurl)
     urllib.request.urlretrieve(downurl, filename, callbackfunc)
@@ -55,6 +55,7 @@ def getporhub():
         downurl = rdownurl[i].split('"')[2]
         downurl = re.sub('/','',downurl)
         print(downurl)
+    downfile(downurl)
 
 if __name__=='__main__':
     getporhub()
