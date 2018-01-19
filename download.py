@@ -50,7 +50,8 @@ def getporhub():
     rdownurl=re.findall(r'videoUrl.*?}',html)
     # print(rscript)
     print("\n")
-    # print(rtitle)
+    # print(rtitle)'
+    rtitle=str(rtitle)
     title=re.findall(r'\W',rtitle)
     print(title)
     # print(rdownurl)
