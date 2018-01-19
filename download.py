@@ -51,9 +51,9 @@ def getporhub():
     # print(rscript)
     print("\n")
     print(rtitle)
-    print(rdownurl)
+    # print(rdownurl)
     for i in range(3):
-        downurl = rdownurl[i]
+        downurl = rdownurl[i].split('"')[3]
         print(downurl)
 
 if __name__=='__main__':
