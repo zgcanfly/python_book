@@ -51,7 +51,7 @@ def getporhub():
     # print(rscript)
     print("\n")
     # print(rtitle)
-    title=rtitle.split('>')
+    title=re.findall(r'>.*?<',rtitle)
     print(title)
     # print(rdownurl)
     for i in range(3):
