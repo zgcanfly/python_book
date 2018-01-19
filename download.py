@@ -31,7 +31,7 @@ def callbackfunc(blocknum, blocksize, totalsize):
         print('')
         input('输入任意键继续...')
 def downimg(downurl):
-    url='http://dlsw.baidu.com/sw-search-sp/soft/e7/10520/KanKan_V2.7.8.2126_setup.1416995191.exe'
+    url='test.exe'
     filename=os.path.basename(downurl)
     urllib.request.urlretrieve(downurl, filename, callbackfunc)
 
@@ -44,12 +44,14 @@ def getporhub():
         print("网页失败请求！")
     response=request.urlopen(r)
     html=response.read().decode('utf-8')
-    html.encode='utf-8'
-    rscript=re.findall(r'<script>.*?</script>',html.text)
-    rtitle=re.findall(r'<title>.*?</title>',html.text)
+
+    rscript=re.findall(r'<script>.*?</script>',html)
+    rtitle=re.findall(r'<title>.*?</title>',html)
+    rdownurl=re.findall(r'vcServerUrl',html)
     print(rscript)
     print("\n")
     print(rtitle)
+    print(rdownurl)
     # for i in range(4):
 
 
