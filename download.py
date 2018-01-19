@@ -43,7 +43,8 @@ def getporhub():
     except request.RequestException as e:
         print("网页失败请求！")
     response=request.urlopen(r)
-    html=response.read().decode('utf-8')
+    html=response.read()
+    # html=response.read().decode('utf-8')
 
     # rscript=re.findall(r'<script>.*?</script>',html)
     rtitle=re.findall(r'<title>.*?</title>',html)
@@ -52,7 +53,7 @@ def getporhub():
     print("\n")
     # print(rtitle)'
     rtitle=str(rtitle)
-    title=re.findall(r'\W',rtitle)
+    title=re.findall(r'title.*?title',rtitle)
     print(title)
     # print(rdownurl)
     for i in range(3):
