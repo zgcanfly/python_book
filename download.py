@@ -45,7 +45,7 @@ def getporhub():
     response=request.urlopen(r)
     # html=response.read().decode('utf-8')
     html=response.read()
-    html=html.decode('utf-8')
+    html=html.decode('utf-8').encode('utf-8')
 
     # rscript=re.findall(r'<script>.*?</script>',html)
     rtitle=re.findall(r'<title>.*?</title>',html)
