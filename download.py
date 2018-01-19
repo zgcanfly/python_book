@@ -47,7 +47,7 @@ def getporhub():
 
     # rscript=re.findall(r'<script>.*?</script>',html)
     rtitle=re.findall(r'<title>.*?</title>',html)
-    rdownurl=re.findall(r'videoUrl.*?defaultQuality',html)
+    rdownurl=re.findall(r'videoUrl.*?}',html)
     # print(rscript)
     print("\n")
     print(rtitle)
