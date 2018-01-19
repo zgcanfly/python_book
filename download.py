@@ -43,20 +43,13 @@ def getporhub():
     except request.RequestException as e:
         print("网页失败请求！")
     response=request.urlopen(r)
-    # html=response.read().decode('utf-8')
-    html=response.read()
-    html=html.decode('utf-8').encode('utf-8')
-
-    # rscript=re.findall(r'<script>.*?</script>',html)
+    html=response.read().decode('utf-8')
     rtitle=re.findall(r'<title>.*?</title>',html)
     rdownurl=re.findall(r'videoUrl.*?}',html)
-    # print(rscript)
     print("\n")
-    # print(rtitle)'
     rtitle=str(rtitle)
-    title=re.findall(r'title.*?title',rtitle)
+    title=re.findall(r'>.*?<',rtitle)
     print(title)
-    # print(rdownurl)
     for i in range(3):
         downurl = rdownurl[i].split('"')[2]
         print(downurl)
