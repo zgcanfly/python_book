@@ -49,6 +49,8 @@ def getporhub():
     print("\n")
     rtitle=str(rtitle)
     title=re.sub('<.*?title>','',rtitle)
+    title=re.sub('\[','',title)
+    title=re.sub(']','',title)
     print(title)
     print("\n")
     for i in range(1):
