@@ -115,6 +115,7 @@ def start_url():
     # except:
     #     pass
     html=requests.get(url,header)
+    print(html)
     response=BeautifulSoup(html,'lxml')
     get_ph_url(response)
 
