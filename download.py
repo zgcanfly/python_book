@@ -84,7 +84,8 @@ def start_url():
         print("网页请求失败! 2")
     response = request.urlopen(r)
     html = response.read().decode('utf-8')
-    parse_ph_key(html)
+    print(html)
+    # parse_ph_key(html)
 
 if __name__=='__main__':
     # getporhub()
