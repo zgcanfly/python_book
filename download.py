@@ -49,7 +49,10 @@ def getporhub():
     except request.RequestException as e:
         print("网页失败请求！1")
     response=request.urlopen(r)
-    html=response.read().decode('utf-8')
+    try:
+        html=response.read().decode('utf-8')
+    except:
+        pass
     rtitle=re.findall(r'<title>.*?</title>',html)
     rdownurl=re.findall(r'videoUrl.*?}',html)
     print("\n")
@@ -72,7 +75,7 @@ def parse_ph_key(response):
     selector = Selector(text=response)
     divs = selector.xpath('//div[re:test(@class,"thumbnail-info-wrapper")]//@href')
     for div in divs:
-        viewkey = re.findall('viewkey=(.*?)"', div.extract())
+        viewkey = re.findall('/view_video.php.*?>')
         viewurl = 'https://jp.pornhub.com/%s' % viewkey
         print("\n")
         print(viewkey)
@@ -84,7 +87,10 @@ def start_url():
     except request.RequestException as e:
         print("网页请求失败! 2")
     response = request.urlopen(r)
-    response = response.read().decode('utf-8')
+    try:
+        response = response.read().decode('utf-8')
+    except:
+        pass
     # print(response)
     parse_ph_key(response)
 
