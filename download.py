@@ -77,12 +77,8 @@ def parse_ph_key(response):
     except:
         pass
     divs = selector.xpath('//div[re:test(@class,"thumbnail-info-wrapper")]//@href').extract()
-    print(divs)
     for div in divs:
-        print("div:"+div)
-        viewkey = re.findall('\/view_video.*?>',div)
-        viewurl = 'https://jp.pornhub.com/%s' % viewkey
-        print("viewkey:"+viewkey)
+        viewurl = 'https://jp.pornhub.com/%s' % div
         print("viewurl:"+viewurl)
 
 def start_url():
