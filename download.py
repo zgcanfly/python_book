@@ -104,19 +104,19 @@ def get_ph_url(response):
 
 
 def start_url():
-    # try:
-    #     r = request.Request(url=url,headers=header)
-    # except request.RequestException as e:
-    #     print("网页请求失败! 2")
-    # response = request.urlopen(r)
-    #
-    # try:
-    #     response = response.read().decode('utf-8')
-    # except:
-    #     pass
-    html=requests.get(url,headers=header).conten.decode('utf-8')
-    print(html)
-    response=BeautifulSoup(html,'lxml')
+    try:
+        r = request.Request(url=url,headers=header)
+    except request.RequestException as e:
+        print("网页请求失败! 2")
+    response = request.urlopen(r)
+
+    try:
+        response = response.read().decode('utf-8')
+    except:
+        pass
+    # html=requests.get(url,headers=header).conten.decode('utf-8')
+    # print(html)
+    # response=BeautifulSoup(html,'lxml')
     get_ph_url(response)
 
 if __name__=='__main__':
