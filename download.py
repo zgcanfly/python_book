@@ -6,6 +6,7 @@ import io
 import ssl
 import re
 from scrapy.selector import Selector
+from scrapy.http import HtmlResponse
 from  bs4 import BeautifulSoup
 # import threading
 
@@ -83,9 +84,9 @@ def start_url():
     except request.RequestException as e:
         print("网页请求失败! 2")
     response = request.urlopen(r)
-    html = response.read().decode('utf-8')
-    print(html)
-    # parse_ph_key(html)
+    response = response.read().decode('utf-8')
+    print(response)
+    parse_ph_key(response)
 
 if __name__=='__main__':
     # getporhub()
