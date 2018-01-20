@@ -11,7 +11,7 @@ from  bs4 import BeautifulSoup
 # import threading
 
 url = 'https://jp.pornhub.com'
-
+rules='//div[re:test(@class,"thumbnail-info-wrapper")]//@href'
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
@@ -76,7 +76,7 @@ def parse_ph_key(response):
         selector = Selector(text=response)
     except:
         pass
-    divs = selector.xpath('//div[re:test(@class,"thumbnail-info-wrapper")]//@href').extract()
+    divs = selector.xpath(rules).extract()
     for div in divs:
         viewurl = url+div
         print("viewurl:"+viewurl)
