@@ -85,7 +85,7 @@ def start_url():
         print("网页请求失败! 2")
     response = request.urlopen(r)
     response = response.read().decode('utf-8')
-    print(response)
+    # print(response)
     parse_ph_key(response)
 
 if __name__=='__main__':
