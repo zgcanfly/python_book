@@ -9,7 +9,7 @@ from scrapy.selector import Selector
 from  bs4 import BeautifulSoup
 # import threading
 
-url = 'https://jp.pornhub.com'
+url = list('https://jp.pornhub.com')
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
