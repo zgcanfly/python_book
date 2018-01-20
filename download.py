@@ -5,10 +5,11 @@ import os
 import io
 import ssl
 import re
+from scrapy.selector import Selector
 from  bs4 import BeautifulSoup
 # import threading
 
-url = 'https://jp.pornhub.com/view_video.php?viewkey=ph597ac889773f6'
+url = 'https://jp.pornhub.com'
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -63,8 +64,19 @@ def getporhub():
         print(downurl)
     downfile(downurl,title)
 
+
+def parse_ph_key(url):
+    selector = Selector(url)
+    divs = selector.xpath('//div[re:test(@class,"thumbnail-info-wrapper")]//@href')
+    for div in divs:
+        viewkey = re.findall('viewkey=(.*?)"', div.extract())
+        viewurl = 'https://jp.pornhub.com/%s' % viewkey
+        print(viewkey)
+        print(viewurl)
+
 if __name__=='__main__':
-    getporhub()
+    # getporhub()
+    parse_ph_key(url)
 
     # 启动线程下载
     # threading.Thread(target=downimg,args=('')).start()
