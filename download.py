@@ -93,13 +93,12 @@ def get_ph_url(response):
     #这一段经常出问题 尝试3次
     try:
         selector = Selector(text=response)
+        divs = selector.xpath('//div[re:test(@class,"thumbnail-info-wrapper")]//@href').extract()
+        for div in divs:
+           viewurl = url + div
+           print("viewurl:" + viewurl)
+        # 将数据存入mongodb中,待完成
     except:
-        pass
-    divs = selector.xpath('//div[re:test(@class,"thumbnail-info-wrapper")]//@href').extract()
-    for div in divs:
-        viewurl = url+div
-        print("viewurl:"+viewurl)
-        #将数据存入mongodb中,待完成
         pass
 
 
