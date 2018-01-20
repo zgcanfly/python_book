@@ -73,10 +73,9 @@ def getporhub():
 
 def parse_ph_key(response):
     selector = Selector(text=response)
-    divs = selector.xpath('//div[re:test(@class,"thumbnail-info-wrapper")]//@href')
-    # print(divs)
+    divs = selector.xpath('//div[re:test(@class,"thumbnail-info-wrapper")]//@href').extract()
     for div in divs:
-        viewkey = re.findall('\/view_video.*?>',div.extract())
+        viewkey = re.findall('\/view_video.*?>',div)
         viewurl = 'https://jp.pornhub.com/%s' % viewkey
         print(viewkey)
         print(viewurl)
