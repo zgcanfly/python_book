@@ -91,9 +91,9 @@ def get_down_url():
 
 
 def get_ph_url(response):
-	#这一段经常出问题 尝试3次
+    #这一段经常出问题 尝试3次
     try:
-		selector = Selector(text=response)
+        selector = Selector(text=response)
     except:
         pass
     divs = selector.xpath(rules).extract()
