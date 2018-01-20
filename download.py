@@ -112,12 +112,13 @@ def start_url():
 
     try:
         response = response.read().decode('utf-8')
+        get_ph_url(response)
     except:
         pass
     # html=requests.get(url,headers=header).conten.decode('utf-8')
     # print(html)
     # response=BeautifulSoup(html,'lxml')
-    get_ph_url(response)
+
 
 if __name__=='__main__':
     start_url()
