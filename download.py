@@ -12,6 +12,7 @@ from  bs4 import BeautifulSoup
 import pymongo
 import time
 import random
+import requests
 
 url = 'https://jp.pornhub.com'
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -103,16 +104,18 @@ def get_ph_url(response):
 
 
 def start_url():
-    try:
-	    # print(header)
-        r = request.Request(url=url,headers=header)
-    except request.RequestException as e:
-        print("网页请求失败! 2")
-    response = request.urlopen(r)
-    try:
-        response = response.read().decode('utf-8')
-    except:
-        pass
+    # try:
+    #     r = request.Request(url=url,headers=header)
+    # except request.RequestException as e:
+    #     print("网页请求失败! 2")
+    # response = request.urlopen(r)
+    #
+    # try:
+    #     response = response.read().decode('utf-8')
+    # except:
+    #     pass
+    html=requests.get(url,header)
+    response=BeautifulSoup(html,'lxml')
     get_ph_url(response)
 
 if __name__=='__main__':
