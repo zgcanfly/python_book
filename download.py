@@ -83,7 +83,8 @@ def start_url():
     except request.RequestException as e:
         print("网页请求失败! 2")
     response = request.urlopen(r)
-    parse_ph_key(response)
+    html = response.read().decode('utf-8')
+    parse_ph_key(html)
 
 if __name__=='__main__':
     # getporhub()
