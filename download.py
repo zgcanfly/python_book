@@ -78,7 +78,7 @@ def parse_ph_key(response):
         pass
     divs = selector.xpath('//div[re:test(@class,"thumbnail-info-wrapper")]//@href').extract()
     for div in divs:
-        viewurl = 'https://jp.pornhub.com/%s' % div
+        viewurl = url+div
         print("viewurl:"+viewurl)
 
 def start_url():
@@ -91,11 +91,11 @@ def start_url():
         response = response.read().decode('utf-8')
     except:
         pass
-    # print(response)
     parse_ph_key(response)
 
 if __name__=='__main__':
-    # getporhub()
     start_url()
+
+    # getporhub()
     # 启动线程下载
     # threading.Thread(target=downimg,args=('')).start()
