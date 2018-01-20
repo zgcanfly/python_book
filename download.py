@@ -46,7 +46,7 @@ def getporhub():
     try:
         r = request.Request(url)
     except request.RequestException as e:
-        print("网页失败请求！")
+        print("网页失败请求！1")
     response=request.urlopen(r)
     html=response.read().decode('utf-8')
     rtitle=re.findall(r'<title>.*?</title>',html)
@@ -65,8 +65,10 @@ def getporhub():
     downfile(downurl,title)
 
 
-def parse_ph_key(url):
-    selector = Selector(url)
+
+
+def parse_ph_key(response):
+    selector = Selector(response)
     divs = selector.xpath('//div[re:test(@class,"thumbnail-info-wrapper")]//@href')
     print(divs)
     # for div in divs:
@@ -75,9 +77,16 @@ def parse_ph_key(url):
     #     print(viewkey)
     #     print(viewurl)
 
+    def start_url():
+        try:
+            r = request.Request(url=url)
+        except request.RequestException as e:
+            print("网页请求失败! 2")
+        response = request.urlopen(r)
+        parse_ph_key(response)
+
 if __name__=='__main__':
     # getporhub()
-    parse_ph_key(url)
 
     # 启动线程下载
     # threading.Thread(target=downimg,args=('')).start()
