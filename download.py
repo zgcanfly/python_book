@@ -77,16 +77,16 @@ def parse_ph_key(response):
     #     print(viewkey)
     #     print(viewurl)
 
-    def start_url():
-        try:
-            r = request.Request(url=url)
-        except request.RequestException as e:
-            print("网页请求失败! 2")
-        response = request.urlopen(r)
-        parse_ph_key(response)
+def start_url():
+    try:
+        r = request.Request(url=url)
+    except request.RequestException as e:
+        print("网页请求失败! 2")
+    response = request.urlopen(r)
+    parse_ph_key(response)
 
 if __name__=='__main__':
     # getporhub()
-
+    start_url()
     # 启动线程下载
     # threading.Thread(target=downimg,args=('')).start()
