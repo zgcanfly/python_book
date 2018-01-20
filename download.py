@@ -114,7 +114,7 @@ def start_url():
     #     response = response.read().decode('utf-8')
     # except:
     #     pass
-    html=requests.get(url,header)
+    html=requests.get(url,headers=header).conten.decode('utf-8')
     print(html)
     response=BeautifulSoup(html,'lxml')
     get_ph_url(response)
