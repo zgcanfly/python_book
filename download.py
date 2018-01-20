@@ -104,7 +104,7 @@ def get_ph_url(response):
 
 def start_url():
     try:
-	    print(header)
+	    # print(header)
         r = request.Request(url=url,headers=header)
     except request.RequestException as e:
         print("网页请求失败! 2")
