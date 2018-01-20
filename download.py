@@ -110,6 +110,7 @@ def start_url():
     response = request.urlopen(r)
     try:
         response = response.read().decode('utf-8')
+        print(response)
     except:
         pass
     get_ph_url(response)
