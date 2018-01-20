@@ -69,7 +69,7 @@ def getporhub():
 
 
 def parse_ph_key(response):
-    selector = Selector(response)
+    selector = Selector(text=response)
     divs = selector.xpath('//div[re:test(@class,"thumbnail-info-wrapper")]//@href')
     print(divs)
     # for div in divs:
