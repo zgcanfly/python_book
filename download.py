@@ -57,7 +57,7 @@ def callbackfunc(blocknum, blocksize, totalsize):
 def down_file(downurl,title):
     title=title+'.mp4'
     filename=os.path.basename(title)
-    urllib.request.urlretrieve(downurl, filename, callbackfunc)
+    request.urlretrieve(downurl, filename, callbackfunc)
 
 
 def get_down_url():
@@ -104,13 +104,12 @@ def get_ph_url(response):
 
 def start_url():
     try:
-        r = request.Request(url=url,headers=header)
+        r = request.Request(url,header)
     except request.RequestException as e:
         print("网页请求失败! 2")
     response = request.urlopen(r)
     try:
         response = response.read().decode('utf-8')
-        print(response)
     except:
         pass
     get_ph_url(response)
