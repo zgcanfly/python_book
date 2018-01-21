@@ -46,7 +46,7 @@ def callbackfunc(blocknum, blocksize, totalsize):
 
 
 def down_file():
-    filename=os.path.basename('download\/'+url)
+    filename=os.path.basename(url)
     request.urlretrieve(url, filename, callbackfunc)
 
 
