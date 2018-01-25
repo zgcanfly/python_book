@@ -2,6 +2,8 @@
 from email.mime.text import MIMEText
 import smtplib
 
+
+
 title = '小娜'
 def sendEmail(content):  # 定义邮件报警
     mail_host = "smtp.163.com"
