@@ -126,23 +126,25 @@ def weather():
         temp2 = rwea[i].split('>')[1].split('<')[0]
         tplt = "{0:^10}\t{1:{4}^10}\t{2:}\t{3:<}\t{4:}"
         water = tplt.format(data, wea, temp1, "~" + temp2, chr(12288))
-        # print(water)
+        print(water)
         # return
         #邮件通知
-        if status in wea:
+        if status in water:
             message=str(temp1)
             wea=str(wea)
             data=str(data)
             try:
+                print(date,data,wea,message)
                 insertDB(date,data,wea,message)
+                temp3 = selectDB()
+                content = "  亲爱的主人 检测到天气有雨  出门请备伞!  出入平安哦～\n %s " % (str(temp3))
+                print(content)
+                mail.sendEmail(content)
+                db.close()
             except:
                 content=hostname +": Mysql数据库插入data error ，请检查数据库状态"
                 mail.sendEmail(content)
-    temp3=selectDB()
-    content = "  亲爱的主人 检测到天气有雨  出门请备伞!  出入平安哦～\n %s "%(str(temp3))
-    print(content)
-    mail.sendEmail(content)
-    db.close()
+
 if __name__ == '__main__':
     weather()
     #createDB()
