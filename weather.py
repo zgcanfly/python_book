@@ -34,11 +34,12 @@ hostname = socket.gethostname()
 
 try:
     db = pymysql.connect(host, user, passwd, base, charset="utf8")
+    cursor = db.cursor()
 except:
     content = hostname+":Mysql数据库链接错误 ，请检查数据库状态"
     mail.sendEmail(content)
 
-cursor = db.cursor()
+
 
 def createDB():
     db = pymysql.connect(host, user, passwd)
@@ -125,6 +126,8 @@ def weather():
         temp2 = rwea[i].split('>')[1].split('<')[0]
         tplt = "{0:^10}\t{1:{4}^10}\t{2:}\t{3:<}\t{4:}"
         water = tplt.format(data, wea, temp1, "~" + temp2, chr(12288))
+        # print(water)
+        # return
         #邮件通知
         if status in wea:
             message=str(temp1)
