@@ -12,9 +12,10 @@ import time
 import pandas as pd
 import socket
 #weather变量定义
-url = 'http://www.weather.com.cn/weather/101020600.shtml'
+#添加城市地址的url，具体url自己到中国气象网查询
+urls={"上海":"http://www.weather.com.cn/weather/101020600.shtml","九江":"http://www.weather.com.cn/weather/101240201.shtml"}
 content = '来自Cortana的空邮件'
-status = '雨'
+status = '晴'
 #数据库变量定义
 host = '106.15.224.237'
 base = 'cortana'
@@ -29,6 +30,7 @@ date=time.strftime("%F", time.localtime())
 wea='雨'
 message='0'
 data='test'
+name='上海'
 
 hostname = socket.gethostname()
 
@@ -66,9 +68,10 @@ def createTable():
     print(results)
     db.close()
 
-def insertDB(date,data,wea,message):
-    column_str='date,data,wea,message'
-    insert_str="'"+date+"','"+data+"','"+wea+"','"+message+"'"
+def insertDB(date,data,wea,message,name):
+    #下面两行要保持一致的结构
+    column_str='date,data,wea,message,name'
+    insert_str="'"+date+"','"+data+"','"+wea+"','"+message+"','"+name+"'"
     inserttsql="INSERT INTO weather(%s) VALUES(%s)"%(column_str,insert_str)
     try:
         cursor.execute(inserttsql)
@@ -81,6 +84,7 @@ def selectDB():
     list_ldata=[]
     list_lwea=[]
     list_lmessage=[]
+    list_lname=[]
     insert_str="'"+date+"'"
     selectsql=" select * from weather where date=%s"%(insert_str)
     try:
@@ -93,20 +97,23 @@ def selectDB():
         ldata = row[2]
         lwea = row[3]
         lmessage = row[4]
+        lname = row[5]
         list_ldate.append(ldate)
         list_ldata.append(ldata)
         list_lwea.append(lwea)
         list_lmessage.append(lmessage)
+        list_lname.append(lname)
     df = pd.DataFrame({
                        'date':list_ldata,
                        'wea':list_lwea,
-                       'zero':list_lmessage})
+                       'zero': list_lmessage,
+                       'name':list_lname}
+                       )
     return  df.get_values()
 
 
 
-def weather():
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+def weather(name,url):
     try:
         r = requests.get(url, timeout=30)
     except requests.RequestException as e:
@@ -119,6 +126,7 @@ def weather():
     rwea = re.findall(r'\"wea\">.*?</p>', r.text)
     rtemp1 = re.findall(r'\/<i>.*?</i>', r.text)
     rtemp2 = re.findall(r'<span>\d+\.?\d*</span>', r.text)
+    # print(rdata,rwea,rtemp1,rtemp2)
     for i in range(6):
         data = rdata[i].split('>')[1].split('<')[0]
         wea = rwea[i].split('>')[1].split('<')[0]
@@ -126,27 +134,31 @@ def weather():
         temp2 = rwea[i].split('>')[1].split('<')[0]
         tplt = "{0:^10}\t{1:{4}^10}\t{2:}\t{3:<}\t{4:}"
         water = tplt.format(data, wea, temp1, "~" + temp2, chr(12288))
-        print(water)
-        # return
+        # print(water)
         #邮件通知
         if status in water:
             message=str(temp1)
             wea=str(wea)
             data=str(data)
             try:
-                print(date,data,wea,message)
-                insertDB(date,data,wea,message)
+                # print(date,data,wea,message,name)
+                insertDB(date,data,wea,message,name)
                 temp3 = selectDB()
                 content = "  亲爱的主人 检测到天气有雨  出门请备伞!  出入平安哦～\n %s " % (str(temp3))
                 print(content)
                 mail.sendEmail(content)
-                db.close()
             except:
                 content=hostname +": Mysql数据库插入data error ，请检查数据库状态"
-                mail.sendEmail(content)
+                print(content)
+                # mail.sendEmail(content)
 
 if __name__ == '__main__':
-    weather()
-    #createDB()
+    for name,url in urls.items():
+        print(name,url)
+        weather(name,url)
+    db.close()
+        #createDB()
     # createTable()
     # selectDB()
+    # 修改表结构
+    # alter table weather add column name varchar(64);
