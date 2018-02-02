@@ -15,7 +15,7 @@ import socket
 #添加城市地址的url，具体url自己到中国气象网查询
 urls={"上海":"http://www.weather.com.cn/weather/101020600.shtml","九江":"http://www.weather.com.cn/weather/101240201.shtml"}
 content = '来自Cortana的空邮件'
-status = '晴'
+status = '雨'
 #数据库变量定义
 host = '106.15.224.237'
 base = 'cortana'
