@@ -151,11 +151,8 @@ def weather(name,url):
                 content=hostname +": Mysql数据库插入data error ，请检查数据库状态"
                 print(content)
                 mail.sendEmail(content)
-    # temp3 = selectDB()
-    # if status in temp3:
-
-         else:
-            print("天气为空")
+         # else:
+         #    print("天气为空")
 if __name__ == '__main__':
     for name,url in urls.items():
         print(name,url)
