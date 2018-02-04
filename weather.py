@@ -141,7 +141,7 @@ def weather(name,url):
             wea=str(wea)
             data=str(data)
             try:
-                # print(date,data,wea,message,name)
+                print(date,data,wea,message,name)
                 insertDB(date,data,wea,message,name)
 
             except:
