@@ -58,6 +58,8 @@ def createDB():
     print(results)
     db.close()
 def createTable():
+    db = pymysql.connect(host, user, passwd, base, charset="utf8")
+    cursor = db.cursor()
     createtablesql="create table "+tablename+" (id int(11) primary key auto_increment,date varchar(128),data varchar(128),wea nvarchar(128), message nvarchar(128)) engine = innodb auto_increment = 1 default charset=utf8"
     try:
         cursor.execute(createtablesql)
@@ -69,6 +71,8 @@ def createTable():
     db.close()
 
 def insertDB(date,data,wea,message,name):
+    db = pymysql.connect(host, user, passwd, base, charset="utf8")
+    cursor = db.cursor()
     #下面两行要保持一致的结构
     column_str='date,data,wea,message,name'
     insert_str="'"+date+"','"+data+"','"+wea+"','"+message+"','"+name+"'"
@@ -78,8 +82,12 @@ def insertDB(date,data,wea,message,name):
         db.commit()
     except:
         db.rollback()
+    db.close()
 #插入单行数据时候可以使用db.close,多行时 不能在这里使用db.close
 def selectDB():
+    db = pymysql.connect(host, user, passwd, base, charset="utf8")
+    cursor = db.cursor()
+
     list_ldate=[]
     list_ldata=[]
     list_lwea=[]
@@ -89,34 +97,35 @@ def selectDB():
     selectsql=" select * from weather where date=%s"%(insert_str)
     try:
         cursor.execute(selectsql)
-    except:
-        pass
-    results=cursor.fetchall()
-    for row in results:
-        ldate = row[1]
-        ldata = row[2]
-        lwea = row[3]
-        lmessage = row[4]
-        lname = row[5]
-        list_ldate.append(ldate)
-        list_ldata.append(ldata)
-        list_lwea.append(lwea)
-        list_lmessage.append(lmessage)
-        list_lname.append(lname)
-    df = pd.DataFrame({
-                       'date':list_ldata,
-                       'wea':list_lwea,
-                       'zero': list_lmessage,
-                       'name':list_lname}
-                       )
-    return  df.get_values()
+        results = cursor.fetchall()
+
+        for row in results:
+            ldate = row[1]
+            ldata = row[2]
+            lwea = row[3]
+            lmessage = row[4]
+            lname = row[5]
+            list_ldate.append(ldate)
+            list_ldata.append(ldata)
+            list_lwea.append(lwea)
+            list_lmessage.append(lmessage)
+            list_lname.append(lname)
+        df = pd.DataFrame({
+                           'date':list_ldata,
+                           'wea':list_lwea,
+                           'zero': list_lmessage,
+                           'name':list_lname}
+                           )
+        return  df.get_values()
+    except Exception as e:
+        print(e)
 
 
 
 def weather(name,url):
     try:
         r = requests.get(url, timeout=30)
-    except requests.RequestException as e:
+    except Exception as e:
         content = e + "天气url请求失败，请检查docker of cortana ！"
         mail.sendEmail(content)
     r.raise_for_status()
@@ -143,21 +152,23 @@ def weather(name,url):
             try:
                 print(date,data,wea,message,name)
                 insertDB(date,data,wea,message,name)
-                content = "  亲爱的主人 检测到天气有雨  出门请备伞!  出入平安哦～\n %s " % (str(temp3))
-                print(content)
-                mail.sendEmail(content)
-
-            except:
+                print("数据插入成功 !")
+            except Exception as e:
                 content=hostname +": Mysql数据库插入data error ，请检查数据库状态"
                 print(content)
                 mail.sendEmail(content)
-         # else:
-         #    print("天气为空")
+    temp3 = selectDB()
+    temp4 = str(temp3)
+    if status in temp4:
+        content = "  亲爱的主人 检测到天气有雨  出门请备伞!  出入平安哦～\n %s " % (str(temp3))
+        print(content)
+        mail.sendEmail(content)
+    else:
+        print("天气为空")
 if __name__ == '__main__':
     for name,url in urls.items():
         print(name,url)
         weather(name,url)
-    db.close()
         #createDB()
     # createTable()
     # selectDB()
