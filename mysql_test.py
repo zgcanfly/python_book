@@ -42,17 +42,3 @@ class MySqLCommand(object):
     def closeMysql(self):
         self.cursor.close()
         self.conn.close()
-
-def showdatabase():
-    cursor=MySqLCommand('192.168.1.74','3306','root','password','yuangg'
-                        )
-
-    showdatabasesql='show databases'
-    try:
-        cursor.execute(showdatabasesql)
-    except:
-        print("Can't connect MySQL server ")
-    results=cursor.fetchall()
-    print(results)
-
-showdatabase()
