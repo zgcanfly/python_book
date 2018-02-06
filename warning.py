@@ -1,12 +1,9 @@
 #coding=utf-8
 import os
-import string
-from multiprocessing import cpu_count
-from email.mime.text import MIMEText
+import mail
 import sys
 import psutil
 import socket
-import smtplib
 
 default_disk="80%"
 default_mem=1000
@@ -30,24 +27,6 @@ def isset(list_arr,name):
     else:
         return False
 
-def sendEmail(content):#定义邮件报警
-    mail_host = "smtp.163.com"
-    mail_user = "15180641712@163.com"
-    mail_pass = "yang1462295175"
-    sender = '15180641712@163.com'
-    receivers = ['2467815216@qq.com']
-    message = MIMEText(content,'plain','utf-8')#内容，格式，编码
-    message['From']="{}".format(sender)
-    message['To']=",".join(receivers)
-    message['Subject'] = title
-
-    try:
-        smtpObj=smtplib.SMTP_SSL(mail_host,465)#ssl
-        smtpObj.login(mail_user,mail_pass)#登入验证
-        smtpObj.sendmail(sender,receivers,message.as_string()) #发送
-        print("mail has been send success")
-    except smtplib.SMTPException as e:
-        print(e)
 
 def int_value(string):
     if "%" in string:
@@ -66,7 +45,7 @@ def check_disk():
 
     if int_value(disk_data) > int_value(default_disk):
         content=hostname + "(" + ip + ")" + "：磁盘利用率过高，请悉知"+"\n当前磁盘利用率为:"+str(disk_data)
-        sendEmail(content)
+        mail.sendEmail(content)
     else:
         return disk_data
 
@@ -77,13 +56,13 @@ def check_mem():
         mem_data=int(mem.total / (memory_convent) - mem.used / (1024 * 1024))
     if mem_data < default_mem:
         content = hostname + "(" + ip + ")" + "：服务器内存值过低，请悉知"+"\n当前内存值为:"+str(mem_data)+"M"
-        sendEmail(content)
+        mail.sendEmail(content)
 
 def check_cpu():
     Cpu_usage = psutil.cpu_percent()
     if Cpu_usage > int_value(default_cpu):
         content=hostname + "(" + ip + ")" + ":cpu利用率过高，请悉知"+"\n当前cpu利用率为:" +str(Cpu_usage)+"%"
-        sendEmail(content)
+        mail.sendEmail(content)
 if __name__=='__main__':
     check_disk()
     check_mem()
