@@ -160,7 +160,7 @@ def weather(name,url):
     temp3 = selectDB()
     temp4 = str(temp3)
     if status in temp4:
-        content = "  亲爱的主人 检测到天气有雨  出门请备伞!  出入平安哦～\n %s " % (str(temp3))
+        content = "  亲爱的主人 检测到天气有雨  出门请备伞!  出入平安哦～\n %s " % (temp4)
         print(content)
         mail.sendEmail(content)
     else:
