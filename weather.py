@@ -7,7 +7,8 @@ import socket
 import wrmysql
 #weather变量定义
 #添加城市地址的url，具体url自己到中国气象网查询
-urls={"上海":"http://www.weather.com.cn/weather/101020600.shtml","九江":"http://www.weather.com.cn/weather/101240201.shtml"}
+urls={"上海":"http://www.weather.com.cn/weather/101020600.shtml",
+      "九江":"http://www.weather.com.cn/weather/101240201.shtml"}
 content = '来自Cortana的空邮件'
 status = '雨'
 date=time.strftime("%F", time.localtime())
