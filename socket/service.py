@@ -1,30 +1,33 @@
-# 文件名：server.py
+#coding=utf-8
+#创建TCP服务器
+from socket import *
+import os
+from time import ctime
+HOST='localhost'
+# HOST=gethostname()
+PORT=21567
+BUFSIZ=4096
+ADDR=(HOST,PORT)
 
-# 导入 socket、sys 模块
-import socket
-import sys
-
-# 创建 socket 对象
-serversocket = socket.socket(
-	socket.AF_INET, socket.SOCK_STREAM)
-
-# 获取本地主机名
-host = socket.gethostname()
-
-port = 9999
-
-# 绑定端口号
-serversocket.bind((host, port))
-
-# 设置最大连接数，超过后排队
-serversocket.listen(5)
+tcpSerSock=socket(AF_INET,SOCK_STREAM) #创服务器套接字
+tcpSerSock.bind(ADDR) #套接字与地址绑定
+tcpSerSock.listen(5)  #监听连接,传入连接请求的最大数
 
 while True:
-	# 建立客户端连接
-	clientsocket, addr = serversocket.accept()
+    print('waiting for connection...')
+    tcpCliSock,addr =tcpSerSock.accept()
+    print('...connected from:',addr)
 
-	print("连接地址: %s" % str(addr))
+    while True:
+        data =tcpCliSock.recv(BUFSIZ).decode()
+        print('[%s] %s' %(ctime(),data))
+        if not data:
+            break
+        cmd = os.popen(data)
+        result=cmd.read()
+        tcpCliSock.sendall(result.encode())
+        # tcpCliSock.sendall(('[%s] %s' %(ctime(),str(data).upper())).encode())
+        # tcpCliSock.send(('[%s] %s' %(ctime(),data)).encode())
 
-	msg = 'the is service ' + "\r\n"
-	clientsocket.send(msg.encode('utf-8'))
-	clientsocket.close()
+    tcpCliSock.close()
+tcpSerSock.close()

@@ -1,24 +1,24 @@
-# 文件名：client.py
+#coding=utf-8
 
-# 导入 socket、sys 模块
-import socket
-import sys
+from socket import *
 
-# 创建 socket 对象
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+HOST = 'localhost' #  or 'localhost'
+PORT = 21567
+BUFSIZ = 4096
+ADDR=(HOST,PORT)
 
-# 获取本地主机名
-host = socket.gethostname()
+tcpCliSock = socket(AF_INET,SOCK_STREAM)
+tcpCliSock.connect(ADDR)
 
-# 设置端口好
-port = 9999
+while True:
+    data = input('>:')
+    #print('data=',data);
+    if not data:
+        break
+    tcpCliSock.send(data.encode())
+    data = tcpCliSock.recv(BUFSIZ).decode()
+    if not data:
+        break
+    print(data)
 
-# 连接服务，指定主机和端口
-s.connect((host, port))
-
-# 接收小于 1024 字节的数据
-msg = s.recv(1024)
-
-s.close()
-
-print (msg.decode('utf-8'))
+tcpCliSock.close()
