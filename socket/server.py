@@ -26,8 +26,6 @@ while True:
         cmd = os.popen(data)
         result=cmd.read()
         tcpCliSock.sendall(result.encode())
-        # tcpCliSock.sendall(('[%s] %s' %(ctime(),str(data).upper())).encode())
-        # tcpCliSock.send(('[%s] %s' %(ctime(),data)).encode())
 
     tcpCliSock.close()
 tcpSerSock.close()
