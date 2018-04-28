@@ -14,7 +14,7 @@ sock.send(nickName.encode())
 def sendThreadFunc():
     while True:
         try:
-            myword = input()
+            myword = input(">:")
             sock.send(myword.encode())
             # print(sock.recv(1024).decode())
         except ConnectionAbortedError:
