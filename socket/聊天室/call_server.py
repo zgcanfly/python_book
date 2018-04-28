@@ -4,7 +4,8 @@ import time
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-sock.bind(('localhost', 5550))
+sock.bind(('106.15.224.237', 6666))
+# sock.bind(('localhost', 5550))
 
 sock.listen(5)
 print('Server', socket.gethostbyname('localhost'), 'listening ...')

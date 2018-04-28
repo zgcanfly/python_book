@@ -4,7 +4,7 @@ import threading
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-sock.connect(('localhost', 5550))
+sock.connect(('106.15.224.237', 6666))
 sock.send(b'1')
 print(sock.recv(1024).decode())
 nickName = input('input your nickname: ')
