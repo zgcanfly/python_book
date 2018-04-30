@@ -51,6 +51,6 @@ def down_file():
 
 
 if __name__=='__main__':
-	down_file()
+    down_file()
     # 启动线程下载
     # threading.Thread(target=downimg,args=('')).start()
