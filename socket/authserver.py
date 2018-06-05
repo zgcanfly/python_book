@@ -10,46 +10,46 @@ Buffercache=1024
 host = socket.gethostname()
 
 port = 9999
+key = '1111'
+msg = '欢迎来到 Yuangg 管理区域！' + "\r\n"
 
 # 绑定端口号
 serversocket.bind((host, port))
 
 # 设置最大连接数，超过后排队
 serversocket.listen(5)
-
-def recvThreadFunc():
-    while True:
-        try:
-            otherword =connection.recv(Buffercache)
-            if otherword:
-                print(otherword)
-            else:
+mydict = dict()
+mylist = list()
+def tellOthers(exceptNum, whatToSay):
+    for c in mylist:
+        if c.fileno() != exceptNum:
+            try:
+                c.send(whatToSay.encode())
+            except:
                 pass
-        except ConnectionAbortedError:
-            print('Server closed this connection!')
-
-        except ConnectionResetError:
-            print('Server is closed!')
 
 
-def sendThreadFunc():
-    while True:
-        try:
-            sendword= input('>: ')
-            connection.send(sendword)
-        except ConnectionAbortedError:
-            print('Server closed this connection!')
-        except ConnectionResetError:
-            print('Server is closed!')
+def subThreadIn(myconnection, connNumber):
+    pass
+
+
+def authThreadIn(myconnection, connNumber):
+    print(connection)
+    nickname = myconnection.recv(1024).decode()
+    authcode = myconnection.recv(1024).decode()
+    print(nickname)
+    if authcode == key:
+        message=nickname +" 验证成功"
+        myconnection.send(message.encode())
+    return
+
 
 while True:
     # 建立客户端连接
     connection, addr = serversocket.accept()
-
-    # print("连接地址: %" % str(addr))
-
-    msg = '欢迎来到 Yuangg 管理区域！' + "\r\n"
+    connection.send(msg.encode('utf-8'))
     buf = connection.recv(1024).decode()
+
     if buf == '1':
-        connection.send(msg.encode('utf-8'))
-        connection.close()
+        print(connection)
+        authThreadIn(connection,connection.fileno())
