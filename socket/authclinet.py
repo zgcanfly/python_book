@@ -2,7 +2,7 @@
 # 导入 socket、sys 模块
 import socket
 import sys
-
+import threading
 # 创建 socket 对象
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 
@@ -16,43 +16,55 @@ Buffercache=1024
 s.connect((host, port))
 print(s.recv(1024).decode())
 
-s.send(b'1')
-nickName = input('input your nickname: ')
-authcode = input('input your authcode: ')
-# s.send(b'2')
-s.send(nickName.encode())
-s.send(authcode.encode())
-print(s.recv(1024).decode())
+def authThreadIn():
+    s.send(b'1')
+    nickName = input('input your nickname: ')
+    s.send(nickName.encode())
 
-def recvThreadFunc():
-    while True:
-        try:
-            otherword =s.recv(Buffercache)
-            if otherword:
-                print(otherword)
-            else:
-                pass
-        except ConnectionAbortedError:
-            print('Server closed this connection!')
+    authcode = input('input your authcode: ')
+    s.send(authcode.encode())
 
-        except ConnectionResetError:
-            print('Server is closed!')
+    print(s.recv(1024).decode())
+
 
 
 def sendThreadFunc():
     while True:
         try:
-            sendword= input('>: ')
-            s.send(sendword)
+            data = input(">:")
+            s.send(data.encode())
         except ConnectionAbortedError:
             print('Server closed this connection!')
+            exit()
         except ConnectionResetError:
             print('Server is closed!')
+            exit()
 
 
-# 接收小于 1024 字节的数据
-# msg = s.recv(1024)
-#
-# s.close()
-#
-# print (msg.decode('utf-8'))
+def recvThreadFunc():
+    while True:
+        try:
+            data = s.recv(Buffercache).decode()
+            print(": ",data)
+            if data == 'bye':
+                print('服务器关闭链接，程序退出')
+                exit()
+        except ConnectionAbortedError:
+            print('Server closed this connection!')
+            exit()
+        except ConnectionResetError:
+            print('Server is closed!')
+            exit()
+
+
+if __name__=='__main__':
+    authThreadIn()
+    while True:
+        th1 = threading.Thread(target=sendThreadFunc)
+        th2 = threading.Thread(target=recvThreadFunc)
+        threads = [th1, th2]
+
+        for t in threads:
+            t.setDaemon(True)
+            t.start()
+        t.join()
