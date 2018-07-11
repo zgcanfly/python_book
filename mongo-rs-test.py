@@ -4,9 +4,9 @@ import time
 class Mongodbconn(object):
 	def __init__(self):
 		self.date = time.strftime("%F-%T", time.localtime())
-		self.clients = pymongo.MongoClient(['localhost:21117','localhost:22117','localhost:23117'],replicaSet = 'rs1')
-
-		self.dbname="test"
+		self.clients = pymongo.MongoClient(['10.250.34.15:27017','10.250.34.16:27017','10.250.34.17:27017'],replicaSet = 'rs1')
+		self.dbname="admin"
+		# self.clients.dbname.authenticate("ttx", "ttx2011")
 		self.db=self.clients[self.dbname]
 		self.col1=self.db['detail']
 
@@ -31,11 +31,11 @@ class Mongodbconn(object):
 			time.sleep(10)
 			pass
 
-
-mc=Mongodbconn()
-for i in range(100):
-	if i%2==0:
-		mc.Insertcol1()
-	else:
-		mc.Insertcol2()
-	time.sleep(10)
+if __name__=='__main__':
+	mc=Mongodbconn()
+	for i in range(100):
+		if i%2==0:
+			mc.Insertcol1()
+		else:
+			mc.Insertcol2()
+		time.sleep(10)
