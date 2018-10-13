@@ -9,6 +9,7 @@ def hello():
     users = [{"username":"users1","url":"/users/user1"},
              {"username":"users2","url":"/users/user2"}]
     return render_template("hello.html",title="User List",users=users)
+
 @app.route('/index')
 def index():
 	return render_template("index.html")
