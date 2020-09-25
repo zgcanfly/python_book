@@ -72,7 +72,7 @@ Scrapy==1.5.0
 service-identity==17.0.0
 six==1.11.0
 static3==0.7.0
-tensorflow==1.4.1
+tensorflow==1.15.4
 tensorflow-tensorboard==0.4.0rc3
 traitlets==4.3.2
 tushare==1.1.0
