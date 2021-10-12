@@ -42,7 +42,7 @@ matplotlib==2.1.1
 nbformat==4.4.0
 numpy==1.13.3
 olefile==0.44
-opencv-python==3.4.0.12
+opencv-python==3.4.7.28
 panda3d==1.10.0.dev1182
 pandas==0.22.0
 pandas-datareader==0.5.0
