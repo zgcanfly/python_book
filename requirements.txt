@@ -40,7 +40,7 @@ Markdown==2.6.10
 MarkupSafe==1.0
 matplotlib==2.1.1
 nbformat==4.4.0
-numpy==1.13.3
+numpy==1.22.0
 olefile==0.44
 opencv-python==3.4.0.12
 panda3d==1.10.0.dev1182
