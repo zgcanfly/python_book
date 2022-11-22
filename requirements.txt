@@ -47,7 +47,7 @@ panda3d==1.10.0.dev1182
 pandas==0.22.0
 pandas-datareader==0.5.0
 parsel==1.3.1
-Pillow==4.3.0
+Pillow==9.3.0
 plotly==2.2.3
 protobuf==3.5.1
 psutil==5.4.3
